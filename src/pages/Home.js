@@ -1,16 +1,16 @@
 import React from "react";
-import Hero from "../components/Hero";
+import Heading from "../components/Jumbotron";
 import Container from "../components/Container";
 import Row from "../components/Row";
 import Col from "../components/Col";
 
-function About() {
+function Home() {
   return (
     <div>
-      <Hero backgroundImage="https://i.imgur.com/qkdpN.jpg">
+      <Heading backgroundImage="https://i.imgur.com/qkdpN.jpg">
         <h1>Pupster</h1>
         <h2>They're the Good Boys and Girls</h2>
-      </Hero>
+      </Heading>
       <Container style={{ marginTop: 30 }}>
         <Row>
           <Col size="md-12">
@@ -61,4 +61,4 @@ function About() {
   );
 }
 
-export default About;
+export default Home;
