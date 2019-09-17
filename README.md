@@ -1,68 +1,50 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Project Name:
 
-## Available Scripts
+CryptoCurrency Mining
 
-In the project directory, you can run:
+### MVP:
 
-### `npm start`
+User can receive basic CryptoCurrency Mining information, Create an account and receive custom CryptoCurrency Mining information
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+### Description:
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+Users can receive an overview of CryptoCurrency Mining which includes a definition and the different types CryptoCurrency Mining that currently exist. The user can also create an account to receive custom CryptoCurrency Mining information.
 
-### `npm test`
+### Team Members:
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Rodney James
+Hunter Rickert
+Tim Sherman
 
-### `npm run build`
+### Tech Used:
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Authentication- Cognito
+https://d3js.org/
+React
+Trello
+Javascript
+HTML5
+CSS
+JQuery
+Mongoose
+MongoDB
+Express
+API routes
+Axios
+Reactstrap
+React-Router-Dom
+https://docs.cryptoapis.io/#getting-started
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+## Tasks
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Project Manager:
 
-### `npm run eject`
+Model: create database for sign in/login, create api calls for mining data info, scraping for articles for news section
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+View: import reactstrap for styling, create react html for info for user on tabs, create display for info received from api calls, create view for the article cards
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Controller: navbar functionality to navigate site, create sign up/login form, create form for user mining data info
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Sketch
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+https://www.figma.com/file/E91QBtHCJci5O8ilE1vwPy/Untitled?node-id=0%3A1
