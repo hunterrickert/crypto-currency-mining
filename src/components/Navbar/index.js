@@ -4,45 +4,35 @@ import "./style.css";
 
 // Depending on the current path, this component sets the "active" class on the appropriate navigation link item
 function Navbar() {
-  return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
-      <Link className="navbar-brand" to="/">
-        Pupster
-      </Link>
+    return (
       <div>
-        <ul className="navbar-nav">
-          <li className="nav-item">
-            <Link
-              to="/"
-              className={
-                window.location.pathname === "/" || window.location.pathname === "/about"
-                  ? "nav-link active"
-                  : "nav-link"
-              }
-            >
-              About
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/discover"
-              className={window.location.pathname === "/discover" ? "nav-link active" : "nav-link"}
-            >
-              Discover
-            </Link>
-          </li>
-          <li className="nav-item">
-            <Link
-              to="/search"
-              className={window.location.pathname === "/search" ? "nav-link active" : "nav-link"}
-            >
-              Search
-            </Link>
-          </li>
-        </ul>
+        <Navbar color="light" light expand="md">
+            <NavLeft className="ml-auto" navbar>
+              <NavItem>
+                <NavLink href="/components/">Home</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/components/">POS</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/components/">POW</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href="/components/">News</NavLink>
+              </NavItem>
+            </NavLeft>
+            <NavRight>
+              <NavItem>
+              <NavLink href="/components/">Sign Up</NavLink>
+              </NavItem>
+              <NavItem>
+              <NavLink href="/components/">Sign In</NavLink>
+              </NavItem>
+            </NavRight>
+        </Navbar>
       </div>
-    </nav>
-  );
-}
+    );
+  }
 
 export default Navbar;
+

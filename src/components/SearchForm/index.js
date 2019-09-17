@@ -1,33 +1,28 @@
-import React from "react";
+import React from 'react';
+import { Button, Form, FormGroup, Label, Input } from 'reactstrap';
 import "./style.css";
 
 // Using the datalist element we can create autofill suggestions based on the props.breeds array
 function SearchForm(props) {
-  return (
-    <form className="search">
-      <div className="form-group">
-        <label htmlFor="breed">Breed Name:</label>
-        <input
-          value={props.search}
-          onChange={props.handleInputChange}
-          name="breed"
-          list="breeds"
-          type="text"
-          className="form-control"
-          placeholder="Type in a dog breed to begin"
-          id="breed"
-        />
-        <datalist id="breeds">
-          {props.breeds.map(breed => (
-            <option value={breed} key={breed} />
-          ))}
-        </datalist>
-        <button type="submit" onClick={props.handleFormSubmit} className="btn btn-success">
-          Search
-        </button>
-      </div>
-    </form>
-  );
-}
+
+
+  export default class Example extends React.Component {
+    render() {
+      return (
+        <Form inline>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="exampleEmail" className="mr-sm-2">Email</Label>
+            <Input type="email" name="email" id="exampleEmail" placeholder="something@idk.cool" />
+          </FormGroup>
+          <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
+            <Label for="examplePassword" className="mr-sm-2">Password</Label>
+            <Input type="password" name="password" id="examplePassword" placeholder="don't tell!" />
+          </FormGroup>
+          <Button>Submit</Button>
+        </Form>
+      );
+    };
+  };
+};
 
 export default SearchForm;
