@@ -4,13 +4,13 @@ import POW from "./pages/POW";
 import POS from "./pages/POS";
 import News from "./pages/News";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navbar from "./components/Navbar"
+import Navigation from "./components/Navigation"
 
 function App() {
   return (
     <Router>
       <div>
-        <Navbar />
+        <Navigation />
         <Route exact path="/" component={Home} />
         <Route exact path="/home" component={Home} />
         <Route path="/pow" component={POW} />
