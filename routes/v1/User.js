@@ -10,6 +10,8 @@ router.get("/info", requireAuth, function(req, res) {
 // ######## POST Routes ########
 
 router.post("/signin", requireSignin, function(req, res) {
+  console.log("sign-in route hit") 
+  console.log(req.body);
   res.json({ token: tokenizer(req.user), email: req.user.email });
 });
 
