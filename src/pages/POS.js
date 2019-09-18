@@ -1,24 +1,39 @@
 import React from "react";
 import Heading from "../components/Jumbotron";
-import Container from "../components/Container";
-import Row from "../components/Row";
-import Col from "../components/Col";
+import {
+  Container,
+  Row,
+  Col
+} from 'reactstrap';
 
 function POS() {
   return (
-    <div>
-      <Heading backgroundImage="https://i.imgur.com/qkdpN.jpg">
-        <h1>POS</h1>
-        <h2>They're the Good Boys and Girls</h2>
+    <div style={{
+      backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
+      backgroundRepeat: "no-repeat",
+      backgroundPosition: "center",
+      backgroundSize: "100%",
+      backgroundAttachment: "fixed"
+    }}>
+      <Heading backgroundImage="https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg">
+        <h1 style={{
+          fontWeight: "bold",
+          color: "white"
+        }}>POS</h1>
+        <h2 style={{
+          color: "white"
+        }}>Expand your knowledge!</h2>
+        <br />
+        <br />
       </Heading>
       <Container style={{ marginTop: 30 }}>
         <Row>
-          <Col size="md-12">
-            <h1>Welcome To Pupster!</h1>
-          </Col>
-        </Row>
-        <Row>
-          <Col size="md-12">
+          <Col xs="10"
+          style={{
+            color: "white"
+          }}>
+            <h1>Proof of Stake (PoS)</h1>
+            <hr />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
               consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
@@ -55,8 +70,20 @@ function POS() {
               massa.
             </p>
           </Col>
+          <Col xs="2" className="block-example border-left border-light"
+          style={{
+            color: "white"
+          }}>
+            <h6>Additional Resources:</h6>
+            <p>link</p>
+            <p>link</p>
+            <p>link</p>
+          </Col>
         </Row>
       </Container>
+      <div className="footer" style={{
+        padding: "30px"
+      }}></div>
     </div>
   );
 }
