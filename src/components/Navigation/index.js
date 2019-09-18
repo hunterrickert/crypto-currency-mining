@@ -70,13 +70,13 @@ export default class Navigation extends React.Component {
                     }}>Calculator</NavLink>
                 </NavItem>
                 <NavItem className="ml-auto">
-                  <NavLink to="#" className={window.location.pathname === "#" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
                     style={{
                       color: "white"
                     }}>Sign Up</NavLink>
                 </NavItem>
                 <NavItem className="ml-right">
-                  <NavLink to="#" className={window.location.pathname === "#" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/login" className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
                     style={{
                       color: "white"
                     }}>Log In</NavLink>
