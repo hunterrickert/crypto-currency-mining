@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 import API from "../utils/API";
-import Container from "../components/Container";
+import {
+  Container
+} from 'reactstrap';
 import SearchForm from "../components/SearchForm";
 import SearchResults from "../components/SearchResults";
 import Alert from "../components/Alert";
+import Heading from "../components/Jumbotron";
 
 class News extends Component {
   state = {
@@ -38,7 +41,18 @@ class News extends Component {
   render() {
     return (
       <div>
-        <Container style={{ minHeight: "80%" }}>
+        <Heading backgroundImage="https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg">
+          <h1 style={{
+            fontWeight: "bold",
+            color: "white"
+          }}>News</h1>
+          <h2 style={{
+            color: "white"
+          }}>READ ALL ABOUT IT!</h2>
+          <br />
+          <br />
+        </Heading>
+        <Container>
           <h1 className="text-center">Search By Breed!</h1>
           <Alert
             type="danger"

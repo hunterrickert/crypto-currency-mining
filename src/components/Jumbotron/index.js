@@ -1,6 +1,5 @@
 import React from "react";
 import { Jumbotron, Container } from 'reactstrap';
-import "./style.css";
 
 function Heading(props) {
   return (
@@ -9,7 +8,15 @@ function Heading(props) {
     // </div>
 
     <div>
-      <Jumbotron fluid className="text-center" style={{ backgroundImage: `url(${props.backgroundImage})` }}>
+      <Jumbotron fluid 
+      className="text-center" 
+      style={{ 
+        backgroundImage: `url(${props.backgroundImage})`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "100% auto",
+        padding: '13rem' 
+        }}>
         <Container fluid>
           {props.children}
         </Container>
