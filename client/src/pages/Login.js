@@ -3,7 +3,7 @@ import {
     Container,
     Row
 } from 'reactstrap';
-import Userform from "../components/Userform"
+import LoginForm from "../components/LoginForm"
 
 
 function Login() {
@@ -28,7 +28,7 @@ function Login() {
                     }}>Log In</h1>
                 </Row>
                 <Row>
-                    <Userform />
+                    <LoginForm />
                 </Row>
             </Container>
         </div>
