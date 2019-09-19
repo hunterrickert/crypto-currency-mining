@@ -12,10 +12,12 @@ function POW() {
       backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
-      backgroundSize: "100%",
+      backgroundSize: "cover",
       backgroundAttachment: "fixed"
     }}>
-      <Heading backgroundImage="https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg">
+      <Heading style={{
+        padding: "13rem"
+      }}>
         <h1 style={{
           fontWeight: "bold",
           color: "white"
