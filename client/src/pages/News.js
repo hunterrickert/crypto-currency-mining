@@ -41,9 +41,7 @@ class News extends Component {
   render() {
     return (
       <div>
-        <Heading style={{
-          padding: "13rem"
-        }}>
+        <Heading>
           <h1 style={{
             fontWeight: "bold",
             color: "white"
