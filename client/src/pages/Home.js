@@ -1,13 +1,34 @@
 import React from "react";
 import Heading from "../components/Jumbotron";
-import {
-  Container,
-  Row,
-  Col
-} from 'reactstrap';
+import { Container, Row, Col } from "reactstrap";
 
 function Home() {
   return (
+    <div
+      style={{
+        backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "100%",
+        backgroundAttachment: "fixed"
+      }}
+    >
+      <Heading backgroundImage="https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg">
+        <h1
+          style={{
+            fontWeight: "bold",
+            color: "White"
+          }}
+        >
+          CryptoCurrency Mining
+        </h1>
+        <h2
+          style={{
+            color: "White"
+          }}
+        >
+          Your journey starts here!
+        </h2>
     <div style={{
       backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
       backgroundRepeat: "no-repeat",
@@ -28,7 +49,8 @@ function Home() {
         <br />
         <br />
       </Heading>
-      <Container style={{ marginTop: 30 }}>>
+      <Container style={{ marginTop: 30 }}>
+        >
         <Row>
           <Col xs="12"
             style={{
@@ -42,7 +64,8 @@ function Home() {
           <Col xs="12"
             style={{
               color: "white"
-            }}>
+            }}
+          >
             <p>
               Cryptocurrency mining, or crypto-mining, is a process in which transactions for various forms of cryptocurrency are verified and added to the blockchain digital ledger.
             </p>
@@ -80,9 +103,12 @@ function Home() {
           </Col>
         </Row>
       </Container>
-      <div className="footer" style={{
-        padding: "30px"
-      }}></div>
+      <div
+        className="footer"
+        style={{
+          padding: "30px"
+        }}
+      ></div>
     </div>
   );
 }

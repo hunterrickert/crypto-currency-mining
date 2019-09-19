@@ -1,87 +1,127 @@
-import React from 'react';
+import React from "react";
 import {
-    Button,
-    Form,
-    FormGroup,
-    Label,
-    Input,
-    FormText,
-    Col,
-    Row
-} from 'reactstrap';
+  Button,
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  FormText,
+  Col,
+  Row
+} from "reactstrap";
 
 export default class Calcform extends React.Component {
-    constructor(props) {
-        super(props);
+  constructor(props) {
+    super(props);
 
-        this.state = {
-            isOpen: false
-        };
-    }
-    render() {
-        return (
-            <div>
-                <Form>
-                    <Row>
-                        <Col xs="6">
-                            <FormGroup>
-                                <Label for="cost">Cost ($/kWh)</Label>
-                                <Input type="text" name="text" id="cost" />
-                            </FormGroup>
-                        </Col>
-                        <Col xs="6">
-                            <FormGroup>
-                                <Label for="volumeFilter">Volume Filter</Label>
-                                <Input type="select" name="select" id="volumeFilter">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </Input>
-                            </FormGroup>
-                        </Col>
-                        <Col xs="6">
-                            <FormGroup>
-                                <Label for="sortBy">Sort By</Label>
-                                <Input type="select" name="select" id="sortBy">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </Input>
-                            </FormGroup>
-                        </Col>
-                        <Col xs="6">
-                            <FormGroup>
-                                <Label for="difficultyofRevenue">Difficulty of Revenue</Label>
-                                <Input type="select" name="select" id="difficultyofRevenue">
-                                    <option>1</option>
-                                    <option>2</option>
-                                    <option>3</option>
-                                    <option>4</option>
-                                    <option>5</option>
-                                </Input>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <FormGroup>
-                                <FormText color="muted">
-                                    Your results will be displayed below!
-                                    </FormText>
-                            </FormGroup>
-                        </Col>
-                    </Row>
-                    <Row>
-                        <Col>
-                            <Button>Submit</Button>
-                        </Col>
-                    </Row>
-                </Form>
-            </div>
-        )
-    }
+    this.state = {
+      isOpen: false,
+      blkReward: 12.5
+    };
+  }
+
+  handleSubmit = () => {
+    let reward =
+      ((this.state.hashrate / this.props.btcHash) *
+        144 *
+        this.state.blkReward *
+        30) /
+      (2.2).toFixed(8);
+    alert(`monthly btc mined: ${reward} BTC`);
+
+    let rewardUsd = `${reward}` * this.props.btcPrice;
+    console.log(rewardUsd);
+  };
+
+  handleChange = e => {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  render() {
+    return (
+      <div>
+        <Form>
+          <Row>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="cost">Cost ($/kWh)</Label>
+                <Input type="text" name="text" id="cost" />
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="watts">Watts</Label>
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="watts"
+                  id="volumeFilter"
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="hashrate">Hash Rate GH/s</Label>
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="hashrate"
+                  id="hashrate"
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="difficulty">Difficulty</Label>
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="difficulty"
+                  id="difficulty"
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="blockreward">Block Reward</Label>
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="blockreward"
+                  id="blockreward"
+                  value={this.state.blkReward}
+                ></Input>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <FormGroup>
+                <FormText color="muted">
+                  Your results will be displayed below!
+                </FormText>
+              </FormGroup>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <Button onClick={this.handleSubmit}>Submit</Button>
+            </Col>
+          </Row>
+          <Col>
+            <FormGroup>
+              <Label for="blockreward">Block Reward</Label>
+              <Input
+                onChange={this.handleChange}
+                type="text"
+                name="blockreward"
+                id="blockreward"
+                value={this.props.reward}
+              ></Input>
+            </FormGroup>
+          </Col>
+        </Form>
+      </div>
+    );
+  }
 }
