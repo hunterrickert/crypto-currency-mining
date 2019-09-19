@@ -31,7 +31,9 @@ export default class Navigation extends React.Component {
           backgroundRepeat: "no-repeat",
           backgroundSize: "100%"
         }}>
-          <NavbarToggler onClick={this.toggle} />
+          <NavbarToggler style={{
+            backgroundColor: "white"
+          }} onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
             <Container>
               <Nav navbar>
