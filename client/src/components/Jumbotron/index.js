@@ -14,7 +14,8 @@ function Heading(props) {
         backgroundImage: `url(https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg)`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundSize: "cover"
+        backgroundSize: "cover",
+        padding: "13rem"
         }}>
         <Container fluid>
           {props.children}
