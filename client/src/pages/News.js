@@ -41,7 +41,7 @@ class News extends Component {
   render() {
     return (
       <div>
-        <Heading backgroundImage="https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg">
+        <Heading>
           <h1 style={{
             fontWeight: "bold",
             color: "white"

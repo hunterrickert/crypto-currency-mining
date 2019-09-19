@@ -11,11 +11,11 @@ function Heading(props) {
       <Jumbotron fluid 
       className="text-center" 
       style={{ 
-        backgroundImage: `url(${props.backgroundImage})`,
+        backgroundImage: `url(https://cdn.pixabay.com/photo/2018/12/02/10/07/web-3850917__480.jpg)`,
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
-        backgroundSize: "100% auto",
-        padding: '13rem' 
+        backgroundSize: "cover",
+        padding: "13rem"
         }}>
         <Container fluid>
           {props.children}
