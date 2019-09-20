@@ -1,4 +1,9 @@
 import React from "react";
+import cryptoApis from "cryptoapis.io";
+
+const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
+const caClient = new CryptoApis(apiKey);
+
 import {
   Button,
   Form,
@@ -125,3 +130,11 @@ export default class Calcform extends React.Component {
     );
   }
 }
+// ETH Calculator
+caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN)
+  .then(function(result) {
+    console.log(result);
+  })
+  .catch(function(err) {
+    console.error(err);
+  });
