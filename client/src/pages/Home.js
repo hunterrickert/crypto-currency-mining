@@ -61,7 +61,9 @@ function Home() {
             color: "white"
           }}>
           <Col xs="12">
-          <br />
+            <br />
+            <h1>Full Access</h1>
+            <hr />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
                   consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
