@@ -6,7 +6,7 @@ import {
 import Userform from "../components/Userform"
 
 
-function Signup() {
+function Signup(props) {
     return (
         <div className="text-center"
             style={{
@@ -28,11 +28,10 @@ function Signup() {
                     }}>Sign up</h1>
                 </Row>
                 <Row>
-                    <Userform />
+                    <Userform updateUser={props.updateUser}/>
                 </Row>
             </Container>
         </div >
     );
 }
-
 export default Signup;
