@@ -1,3 +1,4 @@
+const express = require("express");
 const router = require("express").Router();
 const { requireAuth, requireSignin, tokenizer } = require("../auth");
 const db = require("../../models");
@@ -21,13 +22,16 @@ router.post("/signup", function(req, res) {
   console.log(req.body);
 
   if (!email || !password) {
+    console.log("no password")
     res.status(422).send({ error: "You must provide an email and password" });
+    
   }
 
   db.User.findOne({ email })
     .then(dbuser => {
       // if the user exists return an error
       if (dbuser) {
+        console.log("Already in use")
         return res.status(422).send({ error: "Email already in use" });
       }
       //create new user object
@@ -42,5 +46,14 @@ router.post("/signup", function(req, res) {
       return next(err);
     });
 });
+
+router.post('/logout', (req, res) => {
+  if (req.user) {
+      req.logout()
+      res.send({ msg: 'logging out' })
+  } else {
+      res.send({ msg: 'no user to log out' })
+  }
+})
 
 module.exports = router;
