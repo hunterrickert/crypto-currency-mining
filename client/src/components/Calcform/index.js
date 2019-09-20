@@ -1,5 +1,4 @@
 import React from "react";
-import cryptoApis from "cryptoapis.io";
 
 const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
 const caClient = new CryptoApis(apiKey);
