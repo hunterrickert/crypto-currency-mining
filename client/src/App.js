@@ -4,7 +4,7 @@ import POW from "./pages/POW";
 import POS from "./pages/POS";
 import News from "./pages/News";
 import Calculator from "./pages/Calculator";
-import Signup from "./pages/SignUp";
+import Signup from "./pages/SignUpForm";
 import Login from "./pages/Login";
 import { BrowserRouter as Router, Route } from "react-router-dom";
 import Navigation from "./components/Navigation";
