@@ -28,7 +28,7 @@ function Login(props) {
                     }}>Log In</h1>
                 </Row>
                 <Row>
-                    <LoginForm updateUser={this.props.updateUser}/>
+                    <LoginForm updateUser={props.updateUser}/>
                 </Row>
             </Container>
         </div>

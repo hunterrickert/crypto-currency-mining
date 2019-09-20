@@ -20,11 +20,11 @@ class App extends React.Component {
     this.getUser = this.getUser.bind(this)
     this.componentDidMount = this.componentDidMount.bind(this)
     //this.updateUser = this.updateUser.bind(this)
-    
+
 
   }
 
-  getUser (){
+  getUser() {
     axios.get('/v1/user/info').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
@@ -44,38 +44,34 @@ class App extends React.Component {
     })
   }
 
-  componentDidMount () {
+  componentDidMount() {
     this.getUser()
   }
 
-  updateUser =  (userObject) => {
+  updateUser = (userObject) => {
     this.setState(userObject)
   }
 
 
-
-
-
-
-
-
-render() {
-  return (
-    <Router>
-      <div>
-        <Navigation updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
-        <Route exact path="/" component={Home} />
-        <Route exact path="/home" component={Home} />
-        <Route path="/pow" component={POW} />
-        <Route path="/pos" component={POS} />
-        <Route exact path="/news" component={News} />
-        <Route exact path="/calculator" component={Calculator} />
-        <Route path="/signup" component={Signup} />
-        <Route path="/login" updateUser = {this.updateUser} component={Login} />
-      </div>
-    </Router>
-  );
-}
+  render() {
+    return (
+      <Router>
+        <div>
+          <Navigation updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
+          <Route exact path="/" component={Home} />
+          <Route exact path="/home" component={Home} />
+          <Route path="/pow" component={POW} />
+          <Route path="/pos" component={POS} />
+          <Route exact path="/news" component={News} />
+          <Route exact path="/calculator" component={Calculator} />
+          <Route path="/signup" component={Signup} />
+          <Route path="/login" render={props => {
+            return <Login updateUser={this.updateUser} />
+          }} />
+        </div>
+      </Router>
+    );
+  }
 }
 
 export default App;

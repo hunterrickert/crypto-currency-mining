@@ -12,18 +12,20 @@ import
 import axios from 'axios'
 
 class LoginForm extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             email: '',
             password: '',
             redirectTo: null
+
         }
         // this.handleSubmit = this.handleSubmit.bind(this)
         // this.handleChange = this.handleChange.bind(this)
 
     }
 
+ 
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -51,6 +53,8 @@ class LoginForm extends Component {
                      })
                     // update the state to redirect to home
                     this.setState({
+                        email: '',
+                        password: '',
                         redirectTo: '/'
                     })
                 }
@@ -63,6 +67,7 @@ class LoginForm extends Component {
 
 
     render() {
+        console.log("TUCKER", this.props);
         return (
             <Form inline>
                 <FormGroup className="mb-2 mr-sm-2 mb-sm-0">
@@ -77,6 +82,7 @@ class LoginForm extends Component {
                     //  className="btn btn-primary col-1 col-mr-auto"
 
                     onClick={this.handleSubmit}
+                    
                     type="submit">Submit</Button>
             </Form>
         );
