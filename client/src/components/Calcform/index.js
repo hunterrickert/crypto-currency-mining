@@ -1,7 +1,7 @@
 import React from "react";
 
-const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
-const caClient = new CryptoApis(apiKey);
+// const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
+// const caClient = new CryptoApis(apiKey);
 
 import {
   Button,
@@ -21,7 +21,7 @@ export default class Calcform extends React.Component {
 
     this.state = {
       isOpen: false,
-      blkReward: 12.5,
+      blkReward: 12.5
     };
   }
 
@@ -51,11 +51,12 @@ export default class Calcform extends React.Component {
           <Row>
             <Col xs="6">
               <FormGroup>
-                <Label for="cost"><span href="#" id="costexplain">Cost ($/kWh)</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="costexplain"
-                >
+                <Label for="cost">
+                  <span href="#" id="costexplain">
+                    Cost ($/kWh)
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="costexplain">
                   Hello world!
                 </UncontrolledTooltip>
                 <Input type="text" name="text" id="cost" />
@@ -63,11 +64,12 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="watts"><span href="#" id="wattsexplain">Watts</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="wattsexplain"
-                >
+                <Label for="watts">
+                  <span href="#" id="wattsexplain">
+                    Watts
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="wattsexplain">
                   Hello!
                 </UncontrolledTooltip>
                 <Input
@@ -80,11 +82,12 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="hashrate"><span href="#" id="hashexplain">Hash Rate GH/s</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="hashexplain"
-                >
+                <Label for="hashrate">
+                  <span href="#" id="hashexplain">
+                    Hash Rate GH/s
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="hashexplain">
                   Hello world!
                 </UncontrolledTooltip>
                 <Input
@@ -97,11 +100,12 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="difficulty"><span href="#" id="difficultyexplain">Difficulty</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="difficultyexplain"
-                >
+                <Label for="difficulty">
+                  <span href="#" id="difficultyexplain">
+                    Difficulty
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="difficultyexplain">
                   Hello world!
                 </UncontrolledTooltip>
                 <Input
@@ -112,7 +116,11 @@ export default class Calcform extends React.Component {
                 ></Input>
               </FormGroup>
               <FormGroup>
-                <Label for="blockreward"><span href="#" id="blockrewardexplain">Block Reward</span></Label>
+                <Label for="blockreward">
+                  <span href="#" id="blockrewardexplain">
+                    Block Reward
+                  </span>
+                </Label>
                 <UncontrolledTooltip
                   placement="top"
                   target="blockrewardexplain"
@@ -164,10 +172,10 @@ export default class Calcform extends React.Component {
   }
 }
 // ETH Calculator
-caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN)
-  .then(function(result) {
-    console.log(result);
-  })
-  .catch(function(err) {
-    console.error(err);
-  });
+// caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN)
+//   .then(function(result) {
+//     console.log(result);
+//   })
+//   .catch(function(err) {
+//     console.error(err);
+//   });

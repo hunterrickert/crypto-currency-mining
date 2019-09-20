@@ -17,20 +17,20 @@ export default class Calcform extends React.Component {
 
     this.state = {
       isOpen: false,
-      blkReward: 12.5,
+      blkReward: 3
     };
   }
 
   handleSubmit = () => {
     let reward =
-      ((this.state.hashrate / this.props.btcHash) *
+      ((this.state.hashrate / this.props.ethHash) *
         144 *
         this.state.blkReward *
         30) /
       (2.2).toFixed(8);
-    alert(`monthly btc mined: ${reward} BTC`);
+    alert(`monthly eth mined: ${reward} ETH`);
 
-    let rewardUsd = `${reward}` * this.props.btcPrice;
+    let rewardUsd = `${reward}` * this.props.ethPrice;
     console.log(rewardUsd);
   };
 
@@ -47,11 +47,12 @@ export default class Calcform extends React.Component {
           <Row>
             <Col xs="6">
               <FormGroup>
-                <Label for="cost"><span href="#" id="costexplain1">Cost ($/kWh)</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="costexplain1"
-                >
+                <Label for="cost">
+                  <span href="#" id="costexplain1">
+                    Cost ($/kWh)
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="costexplain1">
                   Hello world!
                 </UncontrolledTooltip>
                 <Input type="text" name="text" id="cost" />
@@ -59,11 +60,12 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="watts"><span href="#" id="wattsexplain1">Watts</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="wattsexplain1"
-                >
+                <Label for="watts">
+                  <span href="#" id="wattsexplain1">
+                    Watts
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="wattsexplain1">
                   Hello!
                 </UncontrolledTooltip>
                 <Input
@@ -76,11 +78,12 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="hashrate"><span href="#" id="hashexplain1">Hash Rate GH/s</span></Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="hashexplain1"
-                >
+                <Label for="hashrate">
+                  <span href="#" id="hashexplain1">
+                    Hash Rate GH/s
+                  </span>
+                </Label>
+                <UncontrolledTooltip placement="top" target="hashexplain1">
                   Hello world!
                 </UncontrolledTooltip>
                 <Input
@@ -93,7 +96,11 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6">
               <FormGroup>
-                <Label for="difficulty"><span href="#" id="difficultyexplain1">Difficulty</span></Label>
+                <Label for="difficulty">
+                  <span href="#" id="difficultyexplain1">
+                    Difficulty
+                  </span>
+                </Label>
                 <UncontrolledTooltip
                   placement="top"
                   target="difficultyexplain1"
@@ -108,7 +115,11 @@ export default class Calcform extends React.Component {
                 ></Input>
               </FormGroup>
               <FormGroup>
-                <Label for="blockreward"><span href="#" id="blockrewardexplain1">Block Reward</span></Label>
+                <Label for="blockreward">
+                  <span href="#" id="blockrewardexplain1">
+                    Block Reward
+                  </span>
+                </Label>
                 <UncontrolledTooltip
                   placement="top"
                   target="blockrewardexplain1"
