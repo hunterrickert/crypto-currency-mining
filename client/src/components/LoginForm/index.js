@@ -1,4 +1,5 @@
 import React, {Component} from "react";
+import { withRouter } from "react-router-dom";
 import 
 {
    
@@ -58,6 +59,7 @@ class LoginForm extends Component {
                         password: '',
                         redirectTo: '/'
                     })
+                    this.props.history.push("/home");
                 }
             }).catch(error => {
                 console.log('login error: ')
@@ -90,4 +92,4 @@ class LoginForm extends Component {
     }
 }
 
-export default LoginForm
+export default withRouter(LoginForm);

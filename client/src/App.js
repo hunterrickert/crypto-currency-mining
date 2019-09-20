@@ -23,14 +23,14 @@ class App extends React.Component {
 
 
   }
-getToken = () => {
-  let token = localStorage.getItem("token");
-  console.log(token);
-}
+  getToken = () => {
+    let token = localStorage.getItem("token");
+    console.log(token);
+  }
 
   getUser() {
     this.getToken()
-    
+
     axios.get('/v1/user/info').then(response => {
       console.log('Get user response: ')
       console.log(response.data)
@@ -71,12 +71,16 @@ getToken = () => {
           <Route exact path="/news" component={News} />
           <Route exact path="/calculator" component={Calculator} />
           {/* <Route path="/signup" component={Signup} /> */}
-          <Route path="/signup" render={props => {
-            return <Signup updateUser={this.updateUser} />
-          }} />
-          <Route path="/login" render={props => {
-            return <Login updateUser={this.updateUser} />
-          }} />
+          <Route path="/signup" render={props => (
+            <Signup
+              updateUser={this.updateUser}
+            />
+          )} />
+          <Route path="/login" render={props => (
+            <Login
+              updateUser={this.updateUser}
+            />
+    )} />
         </div>
       </Router>
     );

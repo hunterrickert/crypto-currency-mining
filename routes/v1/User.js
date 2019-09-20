@@ -22,13 +22,16 @@ router.post("/signup", function(req, res) {
   console.log(req.body);
 
   if (!email || !password) {
+    console.log("no password")
     res.status(422).send({ error: "You must provide an email and password" });
+    
   }
 
   db.User.findOne({ email })
     .then(dbuser => {
       // if the user exists return an error
       if (dbuser) {
+        console.log("Already in use")
         return res.status(422).send({ error: "Email already in use" });
       }
       //create new user object
