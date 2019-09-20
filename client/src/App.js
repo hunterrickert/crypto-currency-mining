@@ -4,16 +4,66 @@ import POW from "./pages/POW";
 import POS from "./pages/POS";
 import News from "./pages/News";
 import Calculator from "./pages/Calculator";
-import Signup from "./pages/Signup";
+import Signup from "./pages/SignUp";
 import Login from "./pages/Login";
 import { BrowserRouter as Router, Route } from "react-router-dom";
-import Navigation from "./components/Navigation"
+import Navigation from "./components/Navigation";
+import axios from "axios"
 
-function App() {
+class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      loggedin: false,
+      email: null
+    }
+    this.getUser = this.getUser.bind(this)
+    this.componentDidMount = this.componentDidMount.bind(this)
+    //this.updateUser = this.updateUser.bind(this)
+    
+
+  }
+
+  getUser (){
+    axios.get('/v1/user/info').then(response => {
+      console.log('Get user response: ')
+      console.log(response.data)
+      if (response.data.user) {
+        console.log('Get User: There is a user saved in the server session: ')
+        this.setState({
+          loggedIn: true,
+          email: response.data.user.username
+        })
+      } else {
+        console.log('Get user: no user');
+        this.setState({
+          loggedIn: false,
+          email: null
+        })
+      }
+    })
+  }
+
+  componentDidMount () {
+    this.getUser()
+  }
+
+  updateUser =  (userObject) => {
+    this.setState(userObject)
+  }
+
+
+
+
+
+
+
+
+render() {
   return (
     <Router>
       <div>
-        <Navigation />
+        <Navigation updateUser={this.updateUser} loggedIn={this.state.loggedIn} />
         <Route exact path="/" component={Home} />
         <Route exact path="/home" component={Home} />
         <Route path="/pow" component={POW} />
@@ -21,10 +71,11 @@ function App() {
         <Route exact path="/news" component={News} />
         <Route exact path="/calculator" component={Calculator} />
         <Route path="/signup" component={Signup} />
-        <Route path="/login" component={Login} />
+        <Route path="/login" updateUser = {this.updateUser} component={Login} />
       </div>
     </Router>
   );
+}
 }
 
 export default App;

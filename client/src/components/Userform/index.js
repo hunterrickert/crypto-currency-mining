@@ -35,7 +35,7 @@ handleSubmit = e => {
     axios
         .post('v1/user/signup', {
             email: this.state.email,
-            password: this.state.password
+            password: this.state.password 
         })
         .then(response => {
             console.log('login response: ')
@@ -43,10 +43,10 @@ handleSubmit = e => {
             if (!response.data.errmsg) {
               console.log("successful signup")
                 // update App.js state
-                // this.props.updateUser({
-                //     loggedIn: true,
-                //     email: response.data.email
-                // })
+                this.props.updateUser({
+                    loggedIn: true,
+                    email: response.data.email
+                 })
                 // update the state to redirect to home
                 this.setState({
                     redirectTo: '/signup'

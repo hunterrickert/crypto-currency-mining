@@ -6,7 +6,7 @@ import {
 import LoginForm from "../components/LoginForm"
 
 
-function Login() {
+function Login(props) {
     return (
         <div className="text-center"
             style={{
@@ -28,7 +28,7 @@ function Login() {
                     }}>Log In</h1>
                 </Row>
                 <Row>
-                    <LoginForm />
+                    <LoginForm updateUser={this.props.updateUser}/>
                 </Row>
             </Container>
         </div>
