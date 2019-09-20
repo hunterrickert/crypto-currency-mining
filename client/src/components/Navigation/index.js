@@ -9,6 +9,8 @@ import {
   Badge
 } from 'reactstrap';
 import { NavLink } from "react-router-dom";
+import axios from "axios"
+
 
 export default class Navigation extends React.Component {
   constructor(props) {
@@ -24,6 +26,26 @@ export default class Navigation extends React.Component {
       isOpen: !this.state.isOpen
     });
   }
+
+  logOut = (e) => {
+    e.preventDefault()
+    console.log('logging out')
+    axios.post('/v1/user/logout').then(response => {
+      console.log(response.data)
+      if (response.status === 200) {
+        this.props.updateUser({
+          loggedIn: false,
+          email: null
+        })
+        localStorage.clear();
+      }
+    }).catch(error => {
+        console.log('Logout error')
+    })
+  }
+
+
+
   render() {
     return (
       <div>
@@ -83,6 +105,12 @@ export default class Navigation extends React.Component {
                     style={{
                       color: "white"
                     }}><h5><Badge color="light" pill>Log In</Badge></h5></NavLink>
+                </NavItem>
+                <NavItem className="ml-right">
+                  <NavLink to="/home" className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
+                    style={{
+                      color: "white"
+                    }} onClick={this.logOut}>Log out</NavLink>
                 </NavItem>
               </Nav>
             </Container>
