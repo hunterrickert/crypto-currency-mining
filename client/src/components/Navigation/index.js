@@ -5,7 +5,8 @@ import {
   NavbarToggler,
   Nav,
   NavItem,
-  Container
+  Container,
+  Badge
 } from 'reactstrap';
 import { NavLink } from "react-router-dom";
 
@@ -75,13 +76,13 @@ export default class Navigation extends React.Component {
                   <NavLink to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
                     style={{
                       color: "white"
-                    }}>Sign Up</NavLink>
+                    }}><h5><Badge color="light" pill>Sign Up</Badge></h5></NavLink>
                 </NavItem>
                 <NavItem className="ml-right">
                   <NavLink to="/login" className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
                     style={{
                       color: "white"
-                    }}>Log In</NavLink>
+                    }}><h5><Badge color="light" pill>Log In</Badge></h5></NavLink>
                 </NavItem>
               </Nav>
             </Container>
