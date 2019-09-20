@@ -1,7 +1,16 @@
 import React from "react";
-import { Container, Row, Col, Button } from "reactstrap";
+import { Container, Row, Col, Media} from "reactstrap";
 import Calcform from "../components/Calcform";
+import Calcform2 from "../components/Calcform2";
 import API from "../utils/API";
+import BitImage from "../images/bitcoinimage.jpg";
+import EImage from "../images/ethereum.jpg";
+
+var imgstyle = {
+  minWidth: "100%", 
+  height: "150px", 
+  marginTop: "10px"
+}
 
 class Calculator extends React.Component {
   state = {
@@ -16,16 +25,21 @@ class Calculator extends React.Component {
 
   render() {
     return (
-      <div>
-        <Container
-          style={{
-            marginTop: "100px"
-          }}
-        >
+      <div style={{
+        backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed"
+      }}>
+        <Container>
           <Row>
-            <Col sm="12" md={{ size: 6, offset: 0 }}>
+            <Col 
+            sm="12" md={{ size: 5, offset: 0 }} 
+            className= "border border-light" 
+            style={{ backgroundColor: "white", marginTop: "100px" }}>
               <h3>
-                Mining Calculator <Button className="float-right">Reset</Button>
+              <Media style= {imgstyle} object src={EImage} alt="ethereum image" rounded />
               </h3>
               <h4>Current BTC Hashrate GH/s: {this.state.btcHash}</h4>
               <h4>1 BTC = {this.state.btcPrice}</h4>
@@ -35,8 +49,26 @@ class Calculator extends React.Component {
                 btcPrice={this.state.btcPrice}
               />
             </Col>
+            <Col 
+            sm="12" md={{ size: 5, offset: 2 }} 
+            className= "border border-light"
+            style={{ backgroundColor: "white", marginTop: "100px" }}>
+              <h3>
+              <Media style= {imgstyle} object src={BitImage} alt="bitcoin image" rounded />
+              </h3>
+              <h4>Current BTC Hashrate GH/s: {this.state.btcHash}</h4>
+              <h4>1 BTC = {this.state.btcPrice}</h4>
+              <hr />
+              <Calcform2
+                btcHash={this.state.btcHash}
+                btcPrice={this.state.btcPrice}
+              />
+            </Col>
           </Row>
         </Container>
+        <div className="footer" style={{
+        padding: "30px"
+      }}></div>
       </div>
     );
   }
