@@ -10,8 +10,8 @@ import axios from 'axios';
 
 export default class userform extends React.Component {
   
-  constructor() {
-    super()
+  constructor(props) {
+    super(props)
     this.state = {
         email: '',
         password: '',
@@ -19,7 +19,7 @@ export default class userform extends React.Component {
     }
     // this.handleSubmit = this.handleSubmit.bind(this)
     // this.handleChange = this.handleChange.bind(this)
-
+console.log(props)
 }
 
   handleChange = e => {
@@ -39,14 +39,18 @@ handleSubmit = e => {
         })
         .then(response => {
             console.log('login response: ')
-            console.log(response)
+            console.log("test")
             if (!response.data.errmsg) {
               console.log("successful signup")
                 // update App.js state
+            console.log(this.props)
+            localStorage.setItem("token", response.data.token);
+            
                 this.props.updateUser({
-                    loggedIn: true,
-                    email: response.data.email
-                 })
+                  loggedIn: true,
+                  email: response.data.email
+                })
+                console.log(this.state)
                 // update the state to redirect to home
                 this.setState({
                     redirectTo: '/signup'

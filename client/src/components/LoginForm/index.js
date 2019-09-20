@@ -47,6 +47,7 @@ class LoginForm extends Component {
                 if (response.status === 200) {
                     localStorage.setItem("token", response.data.token);
                     // update App.js state
+                    // console.log(props)
                      this.props.updateUser({
                         loggedIn: true,
                         email: response.data.email
