@@ -1,8 +1,5 @@
 import React from "react";
 
-// const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
-// const caClient = new CryptoApis(apiKey);
-
 import {
   Button,
   Form,
@@ -14,6 +11,7 @@ import {
   Row,
   UncontrolledTooltip
 } from "reactstrap";
+import POW from "../../pages/POW";
 
 export default class Calcform extends React.Component {
   constructor(props) {
@@ -21,21 +19,41 @@ export default class Calcform extends React.Component {
 
     this.state = {
       isOpen: false,
-      blkReward: 12.5
+      blkReward: 12.5,
+      usdValue: "",
+      usdProfit: "",
+      electricCost: "",
+      reward: ""
     };
   }
 
   handleSubmit = () => {
-    let reward =
+    console.log("this.props", this.props);
+    console.log("this.state.hashrate", this.state.hashrate);
+    // Bitcoin mining reward formula
+    const reward =
       ((this.state.hashrate / this.props.btcHash) *
-        144 *
+        3600 *
+        24 *
         this.state.blkReward *
-        30) /
-      (2.2).toFixed(8);
-    alert(`monthly btc mined: ${reward} BTC`);
+        30 *
+        1000000000) /
+      Math.pow(2, 32);
+    // Electricity cost formula
+    const electricCost =
+      (this.state.watts / 1000) * 24 * this.state.cost * (30).toFixed(2);
+    // USD Value formula
+    const usdValue = this.props.btcPrice * reward;
 
-    let rewardUsd = `${reward}` * this.props.btcPrice;
-    console.log(rewardUsd);
+    this.setState({
+      reward,
+      electricCost,
+      usdValue,
+      // USD Profit formula
+      usdProfit: usdValue - electricCost
+    });
+    console.log(this.state.usdValue + "this is this.state.usdValue");
+    console.log(this.state.reward + "this is this.state.reward");
   };
 
   handleChange = e => {
@@ -57,9 +75,16 @@ export default class Calcform extends React.Component {
                   </span>
                 </Label>
                 <UncontrolledTooltip placement="top" target="costexplain">
-                  Hello world!
+                  This is your elecricity cost per kilowatt hour. You may need
+                  to contact your utility provider to identify this cost.
                 </UncontrolledTooltip>
-                <Input type="text" name="text" id="cost" />
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="cost"
+                  id="cost"
+                  placeholder="0.00"
+                />
               </FormGroup>
             </Col>
             <Col xs="6">
@@ -77,6 +102,7 @@ export default class Calcform extends React.Component {
                   type="text"
                   name="watts"
                   id="volumeFilter"
+                  placeholder="1000"
                 ></Input>
               </FormGroup>
             </Col>
@@ -95,26 +121,11 @@ export default class Calcform extends React.Component {
                   type="text"
                   name="hashrate"
                   id="hashrate"
+                  placeholder="1400"
                 ></Input>
               </FormGroup>
             </Col>
             <Col xs="6">
-              <FormGroup>
-                <Label for="difficulty">
-                  <span href="#" id="difficultyexplain">
-                    Difficulty
-                  </span>
-                </Label>
-                <UncontrolledTooltip placement="top" target="difficultyexplain">
-                  Hello world!
-                </UncontrolledTooltip>
-                <Input
-                  onChange={this.handleChange}
-                  type="text"
-                  name="difficulty"
-                  id="difficulty"
-                ></Input>
-              </FormGroup>
               <FormGroup>
                 <Label for="blockreward">
                   <span href="#" id="blockrewardexplain">
@@ -155,13 +166,47 @@ export default class Calcform extends React.Component {
           <Row style={{ marginTop: "10px" }}>
             <Col>
               <FormGroup>
-                <Label for="blockreward">Block Reward</Label>
+                <Label for="btcmined">Monthly BTC Mined</Label>
                 <Input
-                  onChange={this.handleChange}
+                  onChange={this.handleSubmit}
                   type="text"
-                  name="blockreward"
-                  id="blockreward"
-                  value={this.props.reward}
+                  name="btcmined"
+                  id="btcmined"
+                  value={this.state.reward}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="usdValue">USD Value</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="usdValue"
+                  id="usdValue"
+                  value={this.state.usdValue}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="electricCost">Electricity Cost</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="electricCost"
+                  id="electricCost"
+                  value={this.state.electricCost}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+              <FormGroup>
+                <Label for="usdprofit">Monthly USD Profit</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="usdprofit"
+                  id="usdprofit"
+                  value={this.state.usdProfit}
+                  placeholder="0.00"
                 ></Input>
               </FormGroup>
             </Col>
@@ -171,11 +216,3 @@ export default class Calcform extends React.Component {
     );
   }
 }
-// ETH Calculator
-// caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN)
-//   .then(function(result) {
-//     console.log(result);
-//   })
-//   .catch(function(err) {
-//     console.error(err);
-//   });
