@@ -6,15 +6,16 @@ import News from "./pages/News";
 import Calculator from "./pages/Calculator";
 import Signup from "./pages/SignUpForm";
 import Login from "./pages/Login";
-import { BrowserRouter as Router, Route } from "react-router-dom";
+import { BrowserRouter as Router, Route, Redirect } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import axios from "axios"
 
 class App extends React.Component {
-  constructor() {
-    super()
+  constructor(e) {
+    super();
+    const loggedIn = window.localStorage.getItem("token") ? true : false;
     this.state = {
-      loggedin: false,
+      loggedIn,
       email: null
     }
     this.getUser = this.getUser.bind(this)
@@ -23,7 +24,7 @@ class App extends React.Component {
 
 
   }
-  getToken = () => {
+  getToken = (e) => {
     let token = localStorage.getItem("token");
     console.log(token);
   }
@@ -59,6 +60,7 @@ class App extends React.Component {
   }
 
 
+
   render() {
     return (
       <Router>
@@ -69,7 +71,10 @@ class App extends React.Component {
           <Route path="/pow" component={POW} />
           <Route path="/pos" component={POS} />
           <Route exact path="/news" component={News} />
-          <Route exact path="/calculator" component={Calculator} />
+          <Route path="/calculator" render={props => {
+            return localStorage.getItem('token') ? <Calculator /> : <Redirect to="/signup" />
+          }}
+          />
           {/* <Route path="/signup" component={Signup} /> */}
           <Route path="/signup" render={props => (
             <Signup
@@ -80,7 +85,7 @@ class App extends React.Component {
             <Login
               updateUser={this.updateUser}
             />
-    )} />
+          )} />
         </div>
       </Router>
     );
