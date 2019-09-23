@@ -1,71 +1,38 @@
 import React, { Component } from "react";
-import API from "../utils/API";
 import {
   Container
 } from 'reactstrap';
-import SearchForm from "../components/SearchForm";
-import SearchResults from "../components/SearchResults";
-import Alert from "../components/Alert";
+// import SearchResults from "../components/SearchResults";
 import Heading from "../components/Jumbotron";
+
+
 
 class News extends Component {
   state = {
-    search: "",
-    breeds: [],
-    results: [],
-    error: ""
+    articles: []
   };
 
-  // When the component mounts, get a list of all available base breeds and update this.state.breeds
-  componentDidMount() {
-    API.getBaseBreedsList()
-      .then(res => this.setState({ breeds: res.data.message }))
-      .catch(err => console.log(err));
-  }
+  // componentDidMount() {
+  //   ProxyApi.getTopNewsByCoin("bitcoin")
+  //   .then(res => this.setState({ articles: res }))
+  //   .catch(err => console.log(err));
+  // }
 
-  handleInputChange = event => {
-    this.setState({ search: event.target.value });
-  };
-
-  handleFormSubmit = event => {
-    event.preventDefault();
-    API.getDogsOfBreed(this.state.search)
-      .then(res => {
-        if (res.data.status === "error") {
-          throw new Error(res.data.message);
-        }
-        this.setState({ results: res.data.message, error: "" });
-      })
-      .catch(err => this.setState({ error: err.message }));
-  };
   render() {
     return (
-      <div>
-        <Heading>
-          <h1 style={{
-            fontWeight: "bold",
-            color: "white"
-          }}>News</h1>
-          <h2 style={{
-            color: "white"
-          }}>READ ALL ABOUT IT!</h2>
-          <br />
-          <br />
-        </Heading>
+      <div style={{
+        backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        minWidth: "450px"
+      }}>
+        <Heading />
         <Container>
-          <h1 className="text-center">Search By Breed!</h1>
-          <Alert
-            type="danger"
-            style={{ opacity: this.state.error ? 1 : 0, marginBottom: 10 }}
-          >
-            {this.state.error}
-          </Alert>
-          <SearchForm
-            handleFormSubmit={this.handleFormSubmit}
-            handleInputChange={this.handleInputChange}
-            breeds={this.state.breeds}
-          />
-          <SearchResults results={this.state.results} />
+          <h1 style={{color: "white"}}>Top News on Bitcoin:</h1>
+          <br />
+          {/* <SearchResults articles={this.state.articles} /> */}
         </Container>
       </div>
     );

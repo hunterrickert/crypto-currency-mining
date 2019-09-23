@@ -1,4 +1,5 @@
 import React from "react";
+
 import {
   Button,
   Form,
@@ -17,21 +18,41 @@ export default class Calcform extends React.Component {
 
     this.state = {
       isOpen: false,
-      blkReward: 3
+      blkReward: 12.5,
+      usdValue: "",
+      usdProfit: "",
+      electricCost: "",
+      reward: ""
     };
   }
 
   handleSubmit = () => {
-    let reward =
-      ((this.state.hashrate / this.props.ethHash) *
-        144 *
+    console.log("this.props", this.props);
+    console.log("this.state.hashrate", this.state.hashrate);
+    // Bitcoin mining reward formula
+    const reward =
+      ((this.state.hashrate / this.props.btcHash) *
+        3600 *
+        24 *
         this.state.blkReward *
-        30) /
-      (2.2).toFixed(8);
-    alert(`monthly eth mined: ${reward} ETH`);
+        30 *
+        1000000000) /
+      Math.pow(2, 32);
+    // Electricity cost formula
+    const electricCost =
+      (this.state.watts / 1000) * 24 * this.state.cost * (30).toFixed(2);
+    // USD Value formula
+    const usdValue = this.props.btcPrice * reward;
 
-    let rewardUsd = `${reward}` * this.props.ethPrice;
-    console.log(rewardUsd);
+    this.setState({
+      reward,
+      electricCost,
+      usdValue,
+      // USD Profit formula
+      usdProfit: usdValue - electricCost
+    });
+    console.log(this.state.usdValue + "this is this.state.usdValue");
+    console.log(this.state.reward + "this is this.state.reward");
   };
 
   handleChange = e => {
@@ -52,10 +73,17 @@ export default class Calcform extends React.Component {
                     Cost ($/kWh)
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="costexplain1">
-                  Hello world!
+                <UncontrolledTooltip placement="auto" target="costexplain1" fade="true">
+                  This is your elecricity cost per kilowatt hour. You may need
+                  to contact your utility provider to identify this cost.
                 </UncontrolledTooltip>
-                <Input type="text" name="text" id="cost" />
+                <Input
+                  onChange={this.handleChange}
+                  type="text"
+                  name="cost"
+                  id="cost"
+                  placeholder="0.00"
+                />
               </FormGroup>
             </Col>
             <Col xs="6">
@@ -65,14 +93,15 @@ export default class Calcform extends React.Component {
                     Watts
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="wattsexplain1">
-                  Hello!
+                <UncontrolledTooltip placement="auto" target="wattsexplain1" fade="true">
+                This refers to the amount of energy your miner consumes. For example, the Antminer S9 uses 1172 watts.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
                   type="text"
                   name="watts"
                   id="volumeFilter"
+                  placeholder="1000"
                 ></Input>
               </FormGroup>
             </Col>
@@ -83,37 +112,19 @@ export default class Calcform extends React.Component {
                     Hash Rate GH/s
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="hashexplain1">
-                  Hello world!
+                <UncontrolledTooltip placement="auto" target="hashexplain1" fade="true">
+                This refers to the amount hashing power your miner has. For example, the Antminer S9 has a hashrate of 11.85 TH/s.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
                   type="text"
                   name="hashrate"
                   id="hashrate"
+                  placeholder="1400"
                 ></Input>
               </FormGroup>
             </Col>
             <Col xs="6">
-              <FormGroup>
-                <Label for="difficulty">
-                  <span href="#" id="difficultyexplain1">
-                    Difficulty
-                  </span>
-                </Label>
-                <UncontrolledTooltip
-                  placement="top"
-                  target="difficultyexplain1"
-                >
-                  Hello world!
-                </UncontrolledTooltip>
-                <Input
-                  onChange={this.handleChange}
-                  type="text"
-                  name="difficulty"
-                  id="difficulty"
-                ></Input>
-              </FormGroup>
               <FormGroup>
                 <Label for="blockreward">
                   <span href="#" id="blockrewardexplain1">
@@ -121,10 +132,11 @@ export default class Calcform extends React.Component {
                   </span>
                 </Label>
                 <UncontrolledTooltip
-                  placement="top"
+                  placement="auto"
                   target="blockrewardexplain1"
+                  fade="true"
                 >
-                  Hello world!
+                  The Block Reward is the amount of the CryptoCurrency that is paid out per block mined. When joining a mining pool, this reward is divided amongst all pool participants based off of the percentage of hashing power they are providing to the pool.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -139,28 +151,69 @@ export default class Calcform extends React.Component {
           <Row>
             <Col>
               <FormGroup>
-                <FormText color="muted">
-                  Your results will be displayed below!
+                <FormText className="text-center">
+                  <p style={{color: "black"}}>Your results will be displayed below!</p>
                 </FormText>
               </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="text-center">
               <Button onClick={this.handleSubmit}>Submit</Button>
               <Button style={{ marginLeft: "20px" }}>Reset</Button>
             </Col>
           </Row>
+          <hr />
           <Row style={{ marginTop: "10px" }}>
-            <Col>
+            <Col xs="6">
               <FormGroup>
-                <Label for="blockreward">Block Reward</Label>
+                <Label for="btcmined">Monthly BTC Mined</Label>
                 <Input
-                  onChange={this.handleChange}
+                  onChange={this.handleSubmit}
                   type="text"
-                  name="blockreward"
-                  id="blockreward"
-                  value={this.props.reward}
+                  name="btcmined"
+                  id="btcmined"
+                  value={this.state.reward}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="usdValue">USD Value</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="usdValue"
+                  id="usdValue"
+                  value={this.state.usdValue}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="electricCost">Electricity Cost</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="electricCost"
+                  id="electricCost"
+                  value={this.state.electricCost}
+                  placeholder="0.00"
+                ></Input>
+              </FormGroup>
+            </Col>
+            <Col xs="6">
+              <FormGroup>
+                <Label for="usdprofit">Monthly USD Profit</Label>
+                <Input
+                  onChange={this.handleSubmit}
+                  type="text"
+                  name="usdprofit"
+                  id="usdprofit"
+                  value={this.state.usdProfit}
+                  placeholder="0.00"
                 ></Input>
               </FormGroup>
             </Col>
