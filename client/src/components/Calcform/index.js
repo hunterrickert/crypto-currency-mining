@@ -11,6 +11,7 @@ import {
   Row,
   UncontrolledTooltip
 } from "reactstrap";
+// import POW from "../../pages/POW";
 
 export default class Calcform extends React.Component {
   constructor(props) {

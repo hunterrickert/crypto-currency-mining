@@ -28,7 +28,7 @@ export default class Navigation extends React.Component {
   }
 
   logOut = (e) => {
-    e.preventDefault()
+    // e.preventDefault()
     console.log('logging out')
     axios.post('/v1/user/logout').then(response => {
       console.log(response.data)
@@ -40,7 +40,7 @@ export default class Navigation extends React.Component {
         localStorage.clear();
       }
     }).catch(error => {
-        console.log('Logout error')
+      console.log('Logout error')
     })
   }
 
@@ -71,47 +71,70 @@ export default class Navigation extends React.Component {
                     }}>Home</NavLink>
                 </NavItem>
                 <NavItem active>
-                  <NavLink to="/pow" className={window.location.pathname === "/pow" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/pow" className={window.location.pathname === "/pow"
+                    ? "nav-link active"
+                    : "nav-link"}
                     style={{
                       color: "white"
                     }}>POW</NavLink>
                 </NavItem>
                 <NavItem active>
-                  <NavLink to="/pos" className={window.location.pathname === "/pos" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/pos" className={window.location.pathname === "/pos"
+                    ? "nav-link active"
+                    : "nav-link"}
                     style={{
                       color: "white"
                     }}>POS</NavLink>
                 </NavItem>
                 <NavItem active>
-                  <NavLink to="/news" className={window.location.pathname === "/news" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/news" className={window.location.pathname === "/news"
+                    ? "nav-link active"
+                    : "nav-link"}
                     style={{
                       color: "white"
                     }}>News</NavLink>
                 </NavItem>
                 <NavItem>
-                  <NavLink to="/calculator" className={window.location.pathname === "/Calculator" ? "nav-link active" : "nav-link"}
+                  <NavLink to="/calculator" className={window.location.pathname === "/Calculator"
+                    ? "nav-link active"
+                    : "nav-link"}
                     style={{
                       color: "white"
                     }}>Calculator</NavLink>
                 </NavItem>
-                <NavItem className="ml-auto">
-                  <NavLink to="/signup" className={window.location.pathname === "/signup" ? "nav-link active" : "nav-link"}
-                    style={{
-                      color: "white"
-                    }}><h5><Badge color="light" pill>Sign Up</Badge></h5></NavLink>
-                </NavItem>
-                <NavItem className="ml-right">
-                  <NavLink to="/login" className={window.location.pathname === "/login" ? "nav-link active" : "nav-link"}
-                    style={{
-                      color: "white"
-                    }}><h5><Badge color="light" pill>Log In</Badge></h5></NavLink>
-                </NavItem>
-                <NavItem className="ml-right">
-                  <NavLink to="/home" className={window.location.pathname === "/home" ? "nav-link active" : "nav-link"}
-                    style={{
-                      color: "white"
-                    }} onClick={this.logOut}>Log out</NavLink>
-                </NavItem>
+                {!this.props.loggedIn && (
+                  <NavItem className="ml-auto">
+                    <NavLink to="/signup" className={window.location.pathname === "/signup"
+                      ? "nav-link active"
+                      : "nav-link"}
+                      style={{
+                        color: "white"
+                      }}><h5><Badge color="light" pill>Sign Up</Badge></h5></NavLink>
+                  </NavItem>
+                )}
+
+                {!this.props.loggedIn && (
+                  <NavItem className="ml-right">
+                    <NavLink to="/login" className={window.location.pathname === "/login" 
+                      ? "nav-link active" 
+                      : "nav-link"}
+                      style={{
+                        color: "white"
+                      }}><h5><Badge color="light" pill>Log In</Badge></h5></NavLink>
+                  </NavItem>
+                )}
+
+                {this.props.loggedIn && (
+                  <NavItem className="ml-auto">
+                    <NavLink to="/home" className={window.location.pathname === "/home" 
+                      ? "nav-link active" 
+                      : "nav-link"}
+                      style={{
+                        color: "white"
+                      }} onClick={this.logOut}>Log out</NavLink>
+                  </NavItem>
+                )}
+
               </Nav>
             </Container>
           </Collapse>
