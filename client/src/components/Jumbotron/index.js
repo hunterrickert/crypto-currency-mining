@@ -15,7 +15,7 @@ function Heading(props) {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        padding: "13rem"
+        padding: "14rem"
         }}>
         <Container fluid>
           {props.children}

@@ -11,7 +11,6 @@ import {
   Row,
   UncontrolledTooltip
 } from "reactstrap";
-import POW from "../../pages/POW";
 
 export default class Calcform extends React.Component {
   constructor(props) {
@@ -74,7 +73,7 @@ export default class Calcform extends React.Component {
                     Cost ($/kWh)
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="costexplain">
+                <UncontrolledTooltip placement="auto" target="costexplain" fade="true">
                   This is your elecricity cost per kilowatt hour. You may need
                   to contact your utility provider to identify this cost.
                 </UncontrolledTooltip>
@@ -94,8 +93,8 @@ export default class Calcform extends React.Component {
                     Watts
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="wattsexplain">
-                  Hello!
+                <UncontrolledTooltip placement="auto" target="wattsexplain" fade="true">
+                This refers to the amount of energy your miner consumes. For example, the Antminer S9 uses 1172 watts.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -113,8 +112,8 @@ export default class Calcform extends React.Component {
                     Hash Rate GH/s
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="top" target="hashexplain">
-                  Hello world!
+                <UncontrolledTooltip placement="auto" target="hashexplain" fade="true">
+                This refers to the amount hashing power your miner has. For example, the Antminer S9 has a hashrate of 11.85 TH/s.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -133,10 +132,11 @@ export default class Calcform extends React.Component {
                   </span>
                 </Label>
                 <UncontrolledTooltip
-                  placement="top"
+                  placement="auto"
                   target="blockrewardexplain"
+                  fade="true"
                 >
-                  Hello world!
+                  The Block Reward is the amount of the CryptoCurrency that is paid out per block mined. When joining a mining pool, this reward is divided amongst all pool participants based off of the percentage of hashing power they are providing to the pool.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -151,20 +151,21 @@ export default class Calcform extends React.Component {
           <Row>
             <Col>
               <FormGroup>
-                <FormText color="muted">
-                  Your results will be displayed below!
+                <FormText className="text-center">
+                  <p style={{color: "black"}}>Your results will be displayed below!</p>
                 </FormText>
               </FormGroup>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="text-center">
               <Button onClick={this.handleSubmit}>Submit</Button>
               <Button style={{ marginLeft: "20px" }}>Reset</Button>
             </Col>
           </Row>
+          <hr />
           <Row style={{ marginTop: "10px" }}>
-            <Col>
+            <Col xs="6">
               <FormGroup>
                 <Label for="btcmined">Monthly BTC Mined</Label>
                 <Input
@@ -176,6 +177,8 @@ export default class Calcform extends React.Component {
                   placeholder="0.00"
                 ></Input>
               </FormGroup>
+            </Col>
+            <Col xs="6">
               <FormGroup>
                 <Label for="usdValue">USD Value</Label>
                 <Input
@@ -187,6 +190,8 @@ export default class Calcform extends React.Component {
                   placeholder="0.00"
                 ></Input>
               </FormGroup>
+            </Col>
+            <Col xs="6">
               <FormGroup>
                 <Label for="electricCost">Electricity Cost</Label>
                 <Input
@@ -198,6 +203,8 @@ export default class Calcform extends React.Component {
                   placeholder="0.00"
                 ></Input>
               </FormGroup>
+            </Col>
+            <Col xs="6">
               <FormGroup>
                 <Label for="usdprofit">Monthly USD Profit</Label>
                 <Input

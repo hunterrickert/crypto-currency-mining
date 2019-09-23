@@ -41,9 +41,9 @@ class Calculator extends React.Component {
             <Col
               sm="12"
               md={{ size: 5, offset: 0 }}
-              className="border border-light"
-              style={{ backgroundColor: "white", marginTop: "100px" }}
-            >
+              className="border border-dark shadow-lg rounded"
+              style={{ backgroundColor: "#ffe14c", backgroundImage: "url(https://www.transparenttextures.com/patterns/brick-wall-dark.png)", marginTop: "100px" }}
+              >
               {/* BTC Calculator */}
               <h3>
                 <Media
@@ -54,14 +54,13 @@ class Calculator extends React.Component {
                   rounded
                 />
               </h3>
-              <h4>
+              <h4 className="border border-dark text-center shadow-lg rounded" style={{padding: "10px"}}>
                 Current BTC Difficulty H/s:
                 {this.state.blockInfo
                   ? this.state.blockInfo.btc.difficulty
                   : ""}
               </h4>
-              <h4>1 BTC = {this.state.btcPrice}</h4>
-              <hr />
+              <h4 className="border border-dark text-center shadow-lg rounded" style={{padding: "10px"}}>1 BTC = {this.state.btcPrice}</h4>
               {this.state.blockInfo ? (
                 <Calcform
                   btcHash={this.state.blockInfo.btc.difficulty}
@@ -77,8 +76,8 @@ class Calculator extends React.Component {
             <Col
               sm="12"
               md={{ size: 5, offset: 2 }}
-              className="border border-light"
-              style={{ backgroundColor: "white", marginTop: "100px" }}
+              className="border border-dark shadow-lg rounded"
+              style={{ backgroundColor: "#5e8199", backgroundImage: "url(https://www.transparenttextures.com/patterns/brick-wall-dark.png)", marginTop: "100px" }}
             >
               <h3>
                 <Media
@@ -92,8 +91,13 @@ class Calculator extends React.Component {
               <h4>
                 {/* Current ETH Hashrate MH/s: {this.state.blockInfo.eth.difficulty} */}
               </h4>
-              <h4>1 ETH = {this.state.ethPrice}</h4>
-              <hr />
+              <h4 className="border border-dark text-center shadow-lg rounded" style={{padding: "10px"}}>
+                Current BTC Difficulty H/s:
+                {this.state.blockInfo
+                  ? this.state.blockInfo.btc.difficulty
+                  : ""}
+              </h4>
+              <h4 className="border border-dark text-center shadow-lg rounded" style={{padding: "10px"}}>1 BTC = {this.state.btcPrice}</h4>
               <Calcform2
                 ethHash={this.state.ethHash}
                 ethPrice={this.state.ethPrice}

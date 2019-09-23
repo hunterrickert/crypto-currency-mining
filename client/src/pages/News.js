@@ -20,20 +20,17 @@ class News extends Component {
 
   render() {
     return (
-      <div>
-        <Heading>
-          <h1 style={{
-            fontWeight: "bold",
-            color: "white"
-          }}>News</h1>
-          <h2 style={{
-            color: "white"
-          }}>READ ALL ABOUT IT!</h2>
-          <br />
-          <br />
-        </Heading>
+      <div style={{
+        backgroundImage: `url(https://images.wallpaperscraft.com/image/cube_dark_texture_shape_119956_300x168.jpg)`,
+        backgroundRepeat: "no-repeat",
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        backgroundAttachment: "fixed",
+        minWidth: "450px"
+      }}>
+        <Heading />
         <Container>
-          <h1>Top News on Bitcoin:</h1>
+          <h1 style={{color: "white"}}>Top News on Bitcoin:</h1>
           <br />
           {/* <SearchResults articles={this.state.articles} /> */}
         </Container>

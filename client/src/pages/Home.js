@@ -13,19 +13,10 @@ function Home() {
       backgroundRepeat: "no-repeat",
       backgroundPosition: "center",
       backgroundSize: "cover",
-      backgroundAttachment: "fixed"
+      backgroundAttachment: "fixed",
+      minWidth: "450px"
     }}>
-      <Heading>
-        <h1 style={{
-          fontWeight: "bold",
-          color: "white"
-        }}>Home</h1>
-        <h2 style={{
-          color: "white"
-        }}>Your journey starts here!</h2>
-        <br />
-        <br />
-      </Heading>
+      <Heading />
       <Container style={{ marginTop: 30 }}>>
         <Row>
           <Col xs="12"
@@ -65,17 +56,7 @@ function Home() {
             <h1>Full Access</h1>
             <hr />
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc aliquet diam tortor, id
-                  consequat mauris ullamcorper eu. Orci varius natoque penatibus et magnis dis
-                  parturient montes, nascetur ridiculus mus. Pellentesque et dui id justo finibus
-                  sollicitudin at et metus. Ut feugiat tellus nec metus commodo, sed suscipit nisi
-                  gravida. Duis eget vestibulum quam, ut porttitor sem. Donec sagittis mi sollicitudin
-                  turpis semper, et interdum risus lobortis. Vestibulum suscipit nunc non egestas
-                  tristique. Proin hendrerit efficitur malesuada. Mauris lorem urna, sodales accumsan
-                  quam non, tristique tempor erat. Nullam non sem facilisis, tempus tortor sit amet,
-                  volutpat nisl. Ut et turpis non nunc maximus mollis a vitae tortor. Pellentesque
-                  mattis risus ac quam laoreet cursus. Praesent suscipit orci neque, vestibulum
-                  tincidunt augue tincidunt non. Duis consequat mattis tortor vitae mattis.
+            Now that you know the basics about CryptoCurrency mining, would you like to know if CryptoCurrency would be profitable for you? When you signup for a free account you will gain access to a CryptoCurrency miner that will allow you to calculate the profitability of mining Bitcoin or Ethereum based off of your specific costs.
           </p>
           </Col>
         </Row>
