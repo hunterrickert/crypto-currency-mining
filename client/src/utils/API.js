@@ -5,9 +5,9 @@ import axios from "axios";
 export default {
   getbtcHashrate: function() {
     return axios
-      .get("https://www.satochi.co/latest-hashrate")
+      .get("/info")
       .then(data => {
-        console.log(data);
+        console.log(data.data);
         return data.data;
       })
       .catch(err => {
