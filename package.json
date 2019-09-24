@@ -16,8 +16,7 @@
     "server:dev": "nodemon --ignore ./app server.js",
     "server:lint": "eslint .",
     "client:start": "cd client && npm run start",
-    "client:build": "cd client && npm run build",
-    "heroku-postbuild": "npm run build"
+    "client:build": "cd client && npm run build"
     
   },
 
