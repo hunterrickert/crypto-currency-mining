@@ -24,5 +24,12 @@ export default {
       .catch(err => {
         throw err;
       });
+  },
+  getethPrice: function() {
+    return axios
+      .get("https://api.coingecko.com/api/v3/coins/ethereum")
+      .then(data => {
+        return data.data;
+      });
   }
 };
