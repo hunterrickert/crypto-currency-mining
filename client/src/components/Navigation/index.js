@@ -131,7 +131,7 @@ export default class Navigation extends React.Component {
                       : "nav-link"}
                       style={{
                         color: "white"
-                      }} onClick={this.logOut}>Log out</NavLink>
+                      }} onClick={this.logOut}><h5><Badge color="light" pill>Log Out</Badge></h5></NavLink>
                   </NavItem>
                 )}
 

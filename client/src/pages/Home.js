@@ -53,7 +53,7 @@ function Home() {
           }}>
           <Col xs="12">
             <br />
-            <h1>Full Access</h1>
+            <h1>CryptoCurrency Mining Calculator</h1>
             <hr />
             <p>
             Now that you know the basics about CryptoCurrency mining, would you like to know if CryptoCurrency would be profitable for you? When you signup for a free account you will gain access to a CryptoCurrency miner that will allow you to calculate the profitability of mining Bitcoin or Ethereum based off of your specific costs.
