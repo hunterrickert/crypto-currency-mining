@@ -31,7 +31,7 @@ app.get("/info", function(req, res) {
 // Connect to the Mongo DB
 
 const db = require("./config/connection");
-db(process.env.MONGODB_URI || "mongodb://rickert:useruser1@ds023714.mlab.com:23714/heroku_l4jpnn5j");
+db(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 
 
