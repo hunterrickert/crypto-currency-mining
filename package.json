@@ -9,14 +9,14 @@
   "scripts": {
    
     "install": "cd client && npm install",
-    "build": "npm client:build",
+    "build": "cd client && npm run build",
     "start": "node server.js",
     "dev": "concurrently --kill-others \"npm server:dev\" \"npm client:start\"",
     "server:start": "node server.js",
     "server:dev": "nodemon --ignore ./app server.js",
     "server:lint": "eslint .",
-    "client:start": "cd client && npm run start",
-    "client:build": "cd client && npm run build"
+    "client:start": "cd client && npm run start"
+
     
   },
 
