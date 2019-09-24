@@ -8,7 +8,7 @@
   "main": "server.js",
   "scripts": {
    
-    "install": "cd client && npm",
+    "install": "cd client && npm install",
     "build": "npm client:build",
     "start": "node server.js",
     "dev": "concurrently --kill-others \"npm server:dev\" \"npm client:start\"",
