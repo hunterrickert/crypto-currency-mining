@@ -4,26 +4,30 @@ const { requireAuth, requireSignin, tokenizer } = require("../auth");
 const db = require("../../models");
 
 // ######## GET Routes ########
-router.get("/info", requireAuth, function(req, res) {
+router.get("/info", requireAuth, function (req, res) {
   db.User.findById(req.user).then(dbUser => res.json(dbUser));
 });
 
 // ######## POST Routes ########
 
-router.post("/signin", requireSignin, function(req, res) {
-  console.log("sign-in route hit") 
+router.post("/signin", requireSignin, function (req, res) {
+  console.log("sign-in route hit")
   console.log(req.body);
   res.json({ token: tokenizer(req.user), email: req.user.email });
 });
 
-router.post("/signup", function(req, res) {
+router.post("/signup", function (req, res) {
   console.log("sign up route hit");
   const { email, password } = req.body;
   console.log(req.body);
 
   if (!email || !password) {
     console.log("no password")
-    res.status(422).send({ error: "You must provide an email and password" });
+
+    
+
+
+    // res.status(422).send({ error: "You must provide an email and password" });
     
   }
 
@@ -49,10 +53,10 @@ router.post("/signup", function(req, res) {
 
 router.post('/logout', (req, res) => {
   if (req.user) {
-      req.logout()
-      res.send({ msg: 'logging out' })
+    req.logout()
+    res.send({ msg: 'logging out' })
   } else {
-      res.send({ msg: 'no user to log out' })
+    res.send({ msg: 'no user to log out' })
   }
 })
 
