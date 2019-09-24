@@ -31,26 +31,28 @@ export default class Calcform extends React.Component {
     console.log("this.props", this.props);
     console.log("this.state.hashrate", this.state.hashrate);
     // Bitcoin mining reward formula
-    const reward =
+    const reward = Number(
       ((this.state.hashrate / this.props.btcHash) *
         3600 *
         24 *
         this.state.blkReward *
         30 *
         1000000000) /
-      Math.pow(2, 32);
+        Math.pow(2, 32)
+    ).toFixed(8);
     // Electricity cost formula
-    const electricCost =
-      (this.state.watts / 1000) * 24 * this.state.cost * (30).toFixed(2);
+    const electricCost = Number(
+      (this.state.watts / 1000) * 24 * this.state.cost * 30
+    ).toFixed(2);
     // USD Value formula
-    const usdValue = this.props.btcPrice * reward;
+    const usdValue = Number((this.props.btcPrice * reward).toFixed(2));
 
     this.setState({
       reward,
       electricCost,
       usdValue,
       // USD Profit formula
-      usdProfit: usdValue - electricCost
+      usdProfit: Number(usdValue - electricCost).toFixed(2)
     });
     console.log(this.state.usdValue + "this is this.state.usdValue");
     console.log(this.state.reward + "this is this.state.reward");
@@ -74,7 +76,11 @@ export default class Calcform extends React.Component {
                     Cost ($/kWh)
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="costexplain" fade="true">
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="costexplain"
+                  fade="true"
+                >
                   This is your elecricity cost per kilowatt hour. You may need
                   to contact your utility provider to identify this cost.
                 </UncontrolledTooltip>
@@ -94,8 +100,13 @@ export default class Calcform extends React.Component {
                     Watts
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="wattsexplain" fade="true">
-                This refers to the amount of energy your miner consumes. For example, the Antminer S9 uses 1172 watts.
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="wattsexplain"
+                  fade="true"
+                >
+                  This refers to the amount of energy your miner consumes. For
+                  example, the Antminer S9 uses 1172 watts.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -113,8 +124,13 @@ export default class Calcform extends React.Component {
                     Hash Rate GH/s
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="hashexplain" fade="true">
-                This refers to the amount hashing power your miner has. For example, the Antminer S9 has a hashrate of 11.85 TH/s.
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="hashexplain"
+                  fade="true"
+                >
+                  This refers to the amount hashing power your miner has. For
+                  example, the Antminer S9 has a hashrate of 11.85 TH/s.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -137,7 +153,11 @@ export default class Calcform extends React.Component {
                   target="blockrewardexplain"
                   fade="true"
                 >
-                  The Block Reward is the amount of the CryptoCurrency that is paid out per block mined. When joining a mining pool, this reward is divided amongst all pool participants based off of the percentage of hashing power they are providing to the pool.
+                  The Block Reward is the amount of the CryptoCurrency that is
+                  paid out per block mined. When joining a mining pool, this
+                  reward is divided amongst all pool participants based off of
+                  the percentage of hashing power they are providing to the
+                  pool.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -153,7 +173,9 @@ export default class Calcform extends React.Component {
             <Col>
               <FormGroup>
                 <FormText className="text-center">
-                  <p style={{color: "black"}}>Your results will be displayed below!</p>
+                  <p style={{ color: "black" }}>
+                    Your results will be displayed below!
+                  </p>
                 </FormText>
               </FormGroup>
             </Col>

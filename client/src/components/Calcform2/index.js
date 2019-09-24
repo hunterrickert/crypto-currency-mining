@@ -12,17 +12,20 @@ import {
   UncontrolledTooltip
 } from "reactstrap";
 
+import API from "./../../utils/API";
+
 export default class Calcform extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       isOpen: false,
-      blkReward: 12.5,
+      blkReward: 3,
       usdValue: "",
       usdProfit: "",
       electricCost: "",
-      reward: ""
+      reward: "",
+      ethPrice: ""
     };
   }
 
@@ -30,26 +33,32 @@ export default class Calcform extends React.Component {
     console.log("this.props", this.props);
     console.log("this.state.hashrate", this.state.hashrate);
     // Bitcoin mining reward formula
-    const reward =
-      ((this.state.hashrate / this.props.btcHash) *
-        3600 *
-        24 *
+    const reward = Number(
+      (((((this.state.hashrate * 1000000) / this.props.ethHash / 13) *
+        1000 *
+        1000000 *
+        60) /
+        13) *
         this.state.blkReward *
-        30 *
-        1000000000) /
-      Math.pow(2, 32);
+        60 *
+        24 *
+        30) /
+        1.8
+    ).toFixed(8);
     // Electricity cost formula
-    const electricCost =
-      (this.state.watts / 1000) * 24 * this.state.cost * (30).toFixed(2);
+    const electricCost = Number(
+      (this.state.watts / 1000) * 24 * this.state.cost * 30
+    ).toFixed(2);
     // USD Value formula
-    const usdValue = this.props.btcPrice * reward;
+    const usdValue = Number((this.props.ethPrice * reward).toFixed(2));
 
+    console.log("USD", usdValue);
     this.setState({
       reward,
       electricCost,
       usdValue,
       // USD Profit formula
-      usdProfit: usdValue - electricCost
+      usdProfit: Number(usdValue - electricCost).toFixed(2)
     });
     console.log(this.state.usdValue + "this is this.state.usdValue");
     console.log(this.state.reward + "this is this.state.reward");
@@ -73,7 +82,11 @@ export default class Calcform extends React.Component {
                     Cost ($/kWh)
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="costexplain1" fade="true">
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="costexplain1"
+                  fade="true"
+                >
                   This is your elecricity cost per kilowatt hour. You may need
                   to contact your utility provider to identify this cost.
                 </UncontrolledTooltip>
@@ -93,8 +106,13 @@ export default class Calcform extends React.Component {
                     Watts
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="wattsexplain1" fade="true">
-                This refers to the amount of energy your miner consumes. For example, the Antminer S9 uses 1172 watts.
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="wattsexplain1"
+                  fade="true"
+                >
+                  This refers to the amount of energy your miner consumes. For
+                  example, the Antminer S9 uses 1172 watts.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -109,11 +127,16 @@ export default class Calcform extends React.Component {
               <FormGroup>
                 <Label for="hashrate">
                   <span href="#" id="hashexplain1">
-                    Hash Rate GH/s
+                    Hash Rate MH/s
                   </span>
                 </Label>
-                <UncontrolledTooltip placement="auto" target="hashexplain1" fade="true">
-                This refers to the amount hashing power your miner has. For example, the Antminer S9 has a hashrate of 11.85 TH/s.
+                <UncontrolledTooltip
+                  placement="auto"
+                  target="hashexplain1"
+                  fade="true"
+                >
+                  This refers to the amount hashing power your miner has. For
+                  example, the Antminer S9 has a hashrate of 11.85 TH/s.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -136,7 +159,11 @@ export default class Calcform extends React.Component {
                   target="blockrewardexplain1"
                   fade="true"
                 >
-                  The Block Reward is the amount of the CryptoCurrency that is paid out per block mined. When joining a mining pool, this reward is divided amongst all pool participants based off of the percentage of hashing power they are providing to the pool.
+                  The Block Reward is the amount of the CryptoCurrency that is
+                  paid out per block mined. When joining a mining pool, this
+                  reward is divided amongst all pool participants based off of
+                  the percentage of hashing power they are providing to the
+                  pool.
                 </UncontrolledTooltip>
                 <Input
                   onChange={this.handleChange}
@@ -152,7 +179,9 @@ export default class Calcform extends React.Component {
             <Col>
               <FormGroup>
                 <FormText className="text-center">
-                  <p style={{color: "black"}}>Your results will be displayed below!</p>
+                  <p style={{ color: "black" }}>
+                    Your results will be displayed below!
+                  </p>
                 </FormText>
               </FormGroup>
             </Col>
@@ -167,7 +196,7 @@ export default class Calcform extends React.Component {
           <Row style={{ marginTop: "10px" }}>
             <Col xs="6">
               <FormGroup>
-                <Label for="btcmined">Monthly BTC Mined</Label>
+                <Label for="btcmined">Monthly ETH Mined</Label>
                 <Input
                   onChange={this.handleSubmit}
                   type="text"

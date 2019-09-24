@@ -21,15 +21,11 @@ if (process.env.NODE_ENV === "production") {
 // Add routes, both API and view
 app.use(routes);
 app.get("/info", function(req, res) {
-  caClient.BC.ETH.blockchain
-    .getInfo()
-    .then(ethdata =>
-      caClient.BC.BTC.blockchain
-        .getInfo()
-        .then(btcdata =>
-          res.json({ eth: ethdata.payload, btc: btcdata.payload })
-        )
-    );
+  caClient.BC.ETH.blockchain.getInfo().then(ethdata =>
+    caClient.BC.BTC.blockchain.getInfo().then(btcdata => {
+      res.json({ eth: ethdata.payload, btc: btcdata.payload });
+    })
+  );
   // caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN);
 });
 // Connect to the Mongo DB
