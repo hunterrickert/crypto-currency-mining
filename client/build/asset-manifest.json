@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/static/js/main.dc793a9b.chunk.js",
+    "main.js.map": "/static/js/main.dc793a9b.chunk.js.map",
+    "runtime~main.js": "/static/js/runtime~main.f790af40.js",
+    "runtime~main.js.map": "/static/js/runtime~main.f790af40.js.map",
+    "static/css/2.266e55a5.chunk.css": "/static/css/2.266e55a5.chunk.css",
+    "static/js/2.9679b989.chunk.js": "/static/js/2.9679b989.chunk.js",
+    "static/js/2.9679b989.chunk.js.map": "/static/js/2.9679b989.chunk.js.map",
+    "index.html": "/index.html",
+    "precache-manifest.a1ddb2ffc9cec34aa0fe89928e980b47.js": "/precache-manifest.a1ddb2ffc9cec34aa0fe89928e980b47.js",
+    "service-worker.js": "/service-worker.js",
+    "static/css/2.266e55a5.chunk.css.map": "/static/css/2.266e55a5.chunk.css.map",
+    "static/media/bitcoinimage.jpg": "/static/media/bitcoinimage.75e5c985.jpg",
+    "static/media/ethereum.jpg": "/static/media/ethereum.0b6b35d0.jpg"
+  }
+}
