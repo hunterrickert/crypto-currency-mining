@@ -36,7 +36,8 @@ class Calculator extends React.Component {
           backgroundRepeat: "no-repeat",
           backgroundPosition: "center",
           backgroundSize: "cover",
-          backgroundAttachment: "fixed"
+          backgroundAttachment: "fixed",
+          minWidth: "450px"
         }}
       >
         <Container>
@@ -138,13 +139,13 @@ class Calculator extends React.Component {
               )}
             </Col>
           </Row>
-        </Container>
         <div
           className="footer"
           style={{
             padding: "30px"
           }}
         ></div>
+        </Container>
       </div>
     );
   }
