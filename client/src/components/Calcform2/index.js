@@ -2,17 +2,18 @@ import React from "react";
 
 import {
   Button,
-  Form,
   FormGroup,
-  Label,
   Input,
   FormText,
   Col,
   Row,
-  UncontrolledTooltip
+  UncontrolledTooltip,
+  InputGroupAddon,
+  InputGroup,
+  InputGroupText
 } from "reactstrap";
 
-import API from "./../../utils/API";
+// import API from "./../../utils/API";
 
 export default class Calcform extends React.Component {
   constructor(props) {
@@ -73,15 +74,16 @@ export default class Calcform extends React.Component {
   render() {
     return (
       <div>
-        <Form>
           <Row>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="cost">
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="cost">
+                  <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="costexplain1">
                     Cost ($/kWh)
                   </span>
-                </Label>
+                  </InputGroupText>
+                </InputGroupAddon>
                 <UncontrolledTooltip
                   placement="auto"
                   target="costexplain1"
@@ -97,15 +99,17 @@ export default class Calcform extends React.Component {
                   id="cost"
                   placeholder="0.00"
                 />
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="watts">
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="watts">
+                  <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="wattsexplain1">
                     Watts
                   </span>
-                </Label>
+                  </InputGroupText>
+                </InputGroupAddon>
                 <UncontrolledTooltip
                   placement="auto"
                   target="wattsexplain1"
@@ -121,15 +125,17 @@ export default class Calcform extends React.Component {
                   id="volumeFilter"
                   placeholder="1000"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="hashrate">
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="hashrate">
+                  <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="hashexplain1">
                     Hash Rate MH/s
                   </span>
-                </Label>
+                  </InputGroupText>
+                </InputGroupAddon>
                 <UncontrolledTooltip
                   placement="auto"
                   target="hashexplain1"
@@ -145,15 +151,17 @@ export default class Calcform extends React.Component {
                   id="hashrate"
                   placeholder="1400"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="blockreward">
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="blockreward">
+                  <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="blockrewardexplain1">
                     Block Reward
                   </span>
-                </Label>
+                  </InputGroupText>
+                </InputGroupAddon>
                 <UncontrolledTooltip
                   placement="auto"
                   target="blockrewardexplain1"
@@ -172,11 +180,11 @@ export default class Calcform extends React.Component {
                   id="blockreward"
                   value={this.state.blkReward}
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col style={{marginTop: "15px"}}>
               <FormGroup>
                 <FormText className="text-center">
                   <p style={{ color: "black" }}>
@@ -194,9 +202,11 @@ export default class Calcform extends React.Component {
           </Row>
           <hr />
           <Row style={{ marginTop: "10px" }}>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="btcmined">Monthly ETH Mined</Label>
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="btcmined">
+                  <InputGroupText style={{fontSize: "12px"}}>Monthly ETH Mined</InputGroupText>
+                  </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
                   type="text"
@@ -205,11 +215,13 @@ export default class Calcform extends React.Component {
                   value={this.state.reward}
                   placeholder="0.00"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="usdValue">USD Value</Label>
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="usdValue">
+                <InputGroupText style={{fontSize: "12px"}}>USD Value</InputGroupText>
+                </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
                   type="text"
@@ -218,11 +230,13 @@ export default class Calcform extends React.Component {
                   value={this.state.usdValue}
                   placeholder="0.00"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="electricCost">Electricity Cost</Label>
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="electricCost">
+                <InputGroupText style={{fontSize: "12px"}}>Electricity Cost</InputGroupText>
+                  </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
                   type="text"
@@ -231,11 +245,13 @@ export default class Calcform extends React.Component {
                   value={this.state.electricCost}
                   placeholder="0.00"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
-            <Col xs="6">
-              <FormGroup>
-                <Label for="usdprofit">Monthly USD Profit</Label>
+            <Col xs="6" style={{marginTop: "15px"}}>
+              <InputGroup>
+                <InputGroupAddon addonType="prepend" for="usdprofit">
+                <InputGroupText style={{fontSize: "12px"}}>Monthly USD Profit</InputGroupText>
+                  </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
                   type="text"
@@ -244,10 +260,9 @@ export default class Calcform extends React.Component {
                   value={this.state.usdProfit}
                   placeholder="0.00"
                 ></Input>
-              </FormGroup>
+              </InputGroup>
             </Col>
           </Row>
-        </Form>
       </div>
     );
   }
