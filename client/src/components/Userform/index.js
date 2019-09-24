@@ -18,8 +18,7 @@ class userform extends React.Component {
       password: '',
       redirectTo: null
     }
-    // this.handleSubmit = this.handleSubmit.bind(this)
-    // this.handleChange = this.handleChange.bind(this)
+
     console.log(props)
   }
 
@@ -93,6 +92,9 @@ class userform extends React.Component {
           // href="/home"                 
           onClick={this.handleSubmit}
           type="submit" >Submit</Button>
+
+        
+        <p style={{marginTop: "20px"}}>Already a User? <a  href="/login">Login!</a></p>
       </Form>
     );
   }

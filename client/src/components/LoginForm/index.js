@@ -1,8 +1,7 @@
-import React, {Component} from "react";
+import React, { Component } from "react";
 import { withRouter } from "react-router-dom";
-import 
-{
-   
+import {
+
     Button,
     Form,
     FormGroup,
@@ -26,7 +25,7 @@ class LoginForm extends Component {
 
     }
 
- 
+
     handleChange = e => {
         this.setState({
             [e.target.name]: e.target.value
@@ -49,10 +48,10 @@ class LoginForm extends Component {
                     localStorage.setItem("token", response.data.token);
                     // update App.js state
                     // console.log(props)
-                     this.props.updateUser({
+                    this.props.updateUser({
                         loggedIn: true,
                         email: response.data.email
-                     })
+                    })
                     // update the state to redirect to home
                     this.setState({
                         email: '',
@@ -85,8 +84,10 @@ class LoginForm extends Component {
                     //  className="btn btn-primary col-1 col-mr-auto"
 
                     onClick={this.handleSubmit}
-                    
+
                     type="submit">Submit</Button>
+
+                <p style={{ marginTop: "20px" }}>Not a User? <a href="/signup">Sign Up!</a></p>
             </Form>
         );
     }
