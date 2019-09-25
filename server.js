@@ -1,3 +1,4 @@
+require("dotenv").config();
 const express = require("express");
 const path = require("path");
 const routes = require("./routes");
@@ -18,16 +19,19 @@ app.use(express.json());
 app.use(express.static("client/build"));
 
 // Add routes, both API and view
-app.use(routes);
-app.get("/info1", function (req, res) {
-  caClient.BC.ETH.blockchain.getInfo().then(ethdata =>
-    caClient.BC.BTC.blockchain.getInfo().then(btcdata => {
-      res.json({ eth: ethdata.payload, btc: btcdata.payload });
-    })
-  );
+app.get("/info1", async function (req, res) {
+  try {
+    const ethdata = await caClient.BC.ETH.blockchain.getInfo()
+    const btcdata = await caClient.BC.BTC.blockchain.getInfo()
+    res.json({ eth: ethdata.payload, btc: btcdata.payload });
+  } catch (e) {
+    console.log(e);
+    res.status(500).end();
+  }
   // caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN);
 });
 // Connect to the Mongo DB
+app.use(routes);
 
 const db = require("./config/connection");
 db(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
