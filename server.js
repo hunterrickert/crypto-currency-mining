@@ -34,7 +34,9 @@ const db = require("./config/connection");
 db(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 
-
+app.get("*", (req, res) => {
+  res.sendFile(path.resolve(__dirname + "/client/build/index.html"));
+});
 // Start the API server
 app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
