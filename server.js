@@ -3,7 +3,7 @@ const path = require("path");
 const routes = require("./routes");
 const app = express();
 const CryptoApis = require("cryptoapis.io");
-const apiKey = "f9865560a355a1622f47aad89bba07c2be67de3b";
+const apiKey = process.env.cryptoapi_ID;
 const caClient = new CryptoApis(apiKey);
 const PORT = process.env.PORT || 8000;
 
