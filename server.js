@@ -1,6 +1,5 @@
 const express = require("express");
-const http = require("http");
-const mongoose = require("mongoose");
+const path = require("path");
 const routes = require("./routes");
 const app = express();
 const CryptoApis = require("cryptoapis.io");
@@ -15,12 +14,12 @@ require("./services/passport");
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 // Serve up static assets (usually on heroku)
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static("client/build"));
-}
+
+app.use(express.static("client/build"));
+
 // Add routes, both API and view
 app.use(routes);
-app.get("/info", function(req, res) {
+app.get("/info", function (req, res) {
   caClient.BC.ETH.blockchain.getInfo().then(ethdata =>
     caClient.BC.BTC.blockchain.getInfo().then(btcdata => {
       res.json({ eth: ethdata.payload, btc: btcdata.payload });
@@ -35,9 +34,9 @@ db(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 
 app.get("*", (req, res) => {
-  res.sendFile(path.resolve(__dirname + "/client/build", "index.html"));
+  res.redirect("/");
 });
 // Start the API server
-app.listen(PORT, function() {
+app.listen(PORT, function () {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
