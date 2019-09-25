@@ -86,14 +86,14 @@ export default class Navigation extends React.Component {
                       color: "white"
                     }}>POS</NavLink>
                 </NavItem>
-                <NavItem active>
+                {/* <NavItem active>
                   <NavLink to="/news" className={window.location.pathname === "/news"
                     ? "nav-link active"
                     : "nav-link"}
                     style={{
                       color: "white"
                     }}>News</NavLink>
-                </NavItem>
+                </NavItem> */}
                 <NavItem>
                   <NavLink to="/calculator" className={window.location.pathname === "/Calculator"
                     ? "nav-link active"

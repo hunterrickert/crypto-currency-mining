@@ -91,7 +91,7 @@ class userform extends React.Component {
           //  className="btn btn-primary col-1 col-mr-auto"
           // href="/home"                 
           onClick={this.handleSubmit}
-          type="submit" >Submit</Button>
+          type="submit">Submit</Button>
 
         
         <p style={{marginTop: "20px"}}>Already a User? <a  href="/login">Login!</a></p>

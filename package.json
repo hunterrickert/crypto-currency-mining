@@ -7,20 +7,15 @@
   },
   "main": "server.js",
   "scripts": {
-   
     "install": "cd client && npm install",
     "build": "cd client && npm run build",
     "start": "node server.js",
-    "dev": "concurrently --kill-others \"npm server:dev\" \"npm client:start\"",
+    "dev": "concurrently --kill-others \"npm run server:dev\" \"npm run client:start\"",
     "server:start": "node server.js",
     "server:dev": "nodemon --ignore ./app server.js",
     "server:lint": "eslint .",
     "client:start": "cd client && npm run start"
-
-    
   },
-
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hunterrickert/crypto-currency-mining.git"
@@ -36,7 +31,7 @@
     "bcrypt": "^3.0.6",
     "bootstrap": "^4.3.1",
     "concurrently": "^4.1.2",
-    "cryptoapis.io": "^3.0.0",
+    "cryptoapis.io": "^3.1.0",
     "dotenv": "^8.1.0",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

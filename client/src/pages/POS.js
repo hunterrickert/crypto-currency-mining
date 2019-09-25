@@ -40,7 +40,7 @@ function POS() {
         </Row>
       </Container>
       <div className="footer" style={{
-        padding: "45px"
+        padding: "70px"
       }}></div>
     </div>
   );

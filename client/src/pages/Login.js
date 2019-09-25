@@ -14,7 +14,7 @@ function Login(props) {
                 backgroundRepeat: "no-repeat",
                 backgroundPosition: "center",
                 backgroundSize: "cover",
-                padding: '16.7rem'
+                padding: '18rem'
             }}>
             <Container fluid className="block-example border border-dark rounded mb-0"
                 style={{
