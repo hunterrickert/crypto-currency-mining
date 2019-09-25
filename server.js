@@ -19,7 +19,7 @@ app.use(express.static("client/build"));
 
 // Add routes, both API and view
 app.use(routes);
-app.get("/info", function (req, res) {
+app.get("/info1", function (req, res) {
   caClient.BC.ETH.blockchain.getInfo().then(ethdata =>
     caClient.BC.BTC.blockchain.getInfo().then(btcdata => {
       res.json({ eth: ethdata.payload, btc: btcdata.payload });
