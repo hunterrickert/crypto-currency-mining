@@ -11,7 +11,7 @@ function Signup(props) {
         backgroundRepeat: "no-repeat",
         backgroundPosition: "center",
         backgroundSize: "cover",
-        padding: "16.7rem"
+        padding: "18rem"
       }}
     >
       <Container

@@ -71,7 +71,7 @@ export default class Calcform extends React.Component {
           <Row>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="cost">
+                <InputGroupAddon addonType="prepend">
                   <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="costexplain">
                     Cost ($/kWh)
@@ -81,7 +81,6 @@ export default class Calcform extends React.Component {
                 <UncontrolledTooltip
                   placement="auto"
                   target="costexplain"
-                  fade="true"
                 >
                   This is your elecricity cost per kilowatt hour. You may need
                   to contact your utility provider to identify this cost.
@@ -97,7 +96,7 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="watts">
+                <InputGroupAddon addonType="prepend">
                   <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="wattsexplain">
                     Watts
@@ -107,7 +106,6 @@ export default class Calcform extends React.Component {
                 <UncontrolledTooltip
                   placement="auto"
                   target="wattsexplain"
-                  fade="true"
                 >
                   This refers to the amount of energy your miner consumes. For
                   example, the Antminer S9 uses 1172 watts.
@@ -123,7 +121,7 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="hashrate">
+                <InputGroupAddon addonType="prepend">
                   <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="hashexplain">
                     Hash Rate GH/s
@@ -133,7 +131,6 @@ export default class Calcform extends React.Component {
                 <UncontrolledTooltip
                   placement="auto"
                   target="hashexplain"
-                  fade="true"
                 >
                   This refers to the amount hashing power your miner has. For
                   example, the Antminer S9 has a hashrate of 11.85 TH/s.
@@ -149,7 +146,7 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="blockreward">
+                <InputGroupAddon addonType="prepend">
                   <InputGroupText style={{fontSize: "12px"}}>
                   <span href="#" id="blockrewardexplain">
                     Block Reward
@@ -159,7 +156,6 @@ export default class Calcform extends React.Component {
                 <UncontrolledTooltip
                   placement="auto"
                   target="blockrewardexplain"
-                  fade="true"
                 >
                   The Block Reward is the amount of the CryptoCurrency that is
                   paid out per block mined. When joining a mining pool, this
@@ -198,8 +194,8 @@ export default class Calcform extends React.Component {
           <Row style={{ marginTop: "10px" }}>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="btcmined">
-                <InputGroupText style={{fontSize: "12px"}}>Monthly BTC Mined</InputGroupText>
+                <InputGroupAddon addonType="prepend">
+                <InputGroupText style={{fontSize: "12px"}}>BTC Mined/Mo.</InputGroupText>
                   </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
@@ -213,7 +209,7 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="usdValue">
+                <InputGroupAddon addonType="prepend">
                 <InputGroupText style={{fontSize: "12px"}}>USD Value</InputGroupText>
                 </InputGroupAddon>
                 <Input
@@ -228,8 +224,8 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px", marginBottom: "30px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="electricCost">
-                <InputGroupText style={{fontSize: "12px"}}>Electricity Cost</InputGroupText>
+                <InputGroupAddon addonType="prepend">
+                <InputGroupText style={{fontSize: "12px"}}>Electric Cost</InputGroupText>
                 </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}
@@ -243,8 +239,8 @@ export default class Calcform extends React.Component {
             </Col>
             <Col xs="6" style={{marginTop: "15px", marginBottom: "30px"}}>
               <InputGroup>
-                <InputGroupAddon addonType="prepend" for="usdprofit">
-                <InputGroupText style={{fontSize: "12px"}}>Monthly USD Profit</InputGroupText>
+                <InputGroupAddon addonType="prepend">
+                <InputGroupText style={{fontSize: "12px"}}>USD Profit/Mo.</InputGroupText>
                 </InputGroupAddon>
                 <Input
                   onChange={this.handleSubmit}

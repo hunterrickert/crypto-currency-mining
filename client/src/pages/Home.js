@@ -23,7 +23,7 @@ function Home() {
             style={{
               color: "white"
             }}>
-            <h1>CryptoCurrency Mining Info</h1>
+            <h1>CryptoCurrency Hunter Info</h1>
             <hr />
           </Col>
         </Row>

@@ -29,6 +29,7 @@ class Calculator extends React.Component {
   };
 
   render() {
+    console.log(this.state.blockInfo)
     return (
       <div
         style={{
@@ -60,7 +61,7 @@ class Calculator extends React.Component {
                   object
                   src={BitImage}
                   alt="bitcoin image"
-                  rounded
+                  rounded="true"
                 />
               </h3>
               <h4
@@ -79,6 +80,7 @@ class Calculator extends React.Component {
                 1 BTC = {this.state.btcPrice}
               </h4>
               {this.state.blockInfo ? (
+                // console.log(this.state.blockinfo.btc.difficulty),
                 <Calcform
                   btcHash={this.state.blockInfo.btc.difficulty}
                   btcPrice={this.state.btcPrice}
@@ -107,7 +109,7 @@ class Calculator extends React.Component {
                   object
                   src={EImage}
                   alt="ethereum image"
-                  rounded
+                  rounded="true"
                 />
               </h3>
               <h4>
