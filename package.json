@@ -4,8 +4,7 @@
   "description": "CryptoCurrency Mining",
   "main": "server.js",
   "scripts": {
-   
-    "install": "cd app && npm",
+    "install": "cd client && npm install",
     "build": "npm client:build",
     "start": "node server.js",
     "dev": "concurrently --kill-others \"npm server:dev\" \"npm client:start\"",
@@ -15,8 +14,6 @@
     "client:start": "cd client && npm start",
     "client:build": "cd client && npm build"
   },
-
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/hunterrickert/crypto-currency-mining.git"
