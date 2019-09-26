@@ -3,7 +3,7 @@ import axios from "axios";
 export default {
   getbtcHashrate: function() {
     return axios
-      .get("/info1")
+      .get("/cryptoInfo")
       .then(data => {
         console.log(data.data);
         return data.data;
