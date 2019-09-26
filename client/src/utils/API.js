@@ -1,11 +1,9 @@
 import axios from "axios";
 
-// Export an object containing methods we'll use for accessing the Dog.Ceo API
-
 export default {
   getbtcHashrate: function() {
     return axios
-      .get("/info1")
+      .get("/cryptoInfo")
       .then(data => {
         console.log(data.data);
         return data.data;
