@@ -19,47 +19,34 @@ app.use(express.json());
 app.use(express.static("client/build"));
 
 // Add routes, both API and view
-<<<<<<< HEAD
-app.use(routes);
-app.get("/info1", function(req, res) {
-  caClient.BC.ETH.blockchain.getInfo().then(ethdata =>
-    caClient.BC.BTC.blockchain.getInfo().then(btcdata => {
-      res.json({ eth: ethdata.payload, btc: btcdata.payload });
+app.get("/cryptoInfo", function(req, res) {
+  console.log("GETTING STUFF");
+  caClient.BC.ETH.blockchain
+    .getInfo()
+    .then(ethdata => {
+      setTimeout(() => {
+        caClient.BC.BTC.blockchain
+          .getInfo()
+          .then(btcdata => {
+            console.log(ethdata, btcdata);
+            res.json({ eth: ethdata.payload, btc: btcdata.payload });
+          })
+          .catch(err => console.log(err));
+      }, 1200);
     })
-  );
-=======
-app.get("/info1", async function (req, res) {
-  try {
-    const ethdata = await caClient.BC.ETH.blockchain.getInfo()
-    const btcdata = await caClient.BC.BTC.blockchain.getInfo()
-    res.json({ eth: ethdata.payload, btc: btcdata.payload });
-  } catch (e) {
-    console.log(e);
-    res.status(500).end();
-  }
->>>>>>> 8e58b83e0361f3ffca39208a94e27d4869da7607
-  // caClient.BC.ETH.switchNetwork(caClient.BC.ETH.NETWORKS.ROPSTEN);
+    .catch(err => console.log(err));
 });
 // Connect to the Mongo DB
 app.use(routes);
 
 const db = require("./config/connection");
-<<<<<<< HEAD
-db(
-  process.env.MONGODB_URI ||
-    "mongodb://rickert:useruser1@ds023714.mlab.com:23714/heroku_l4jpnn5j"
-);
-// mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
-
-=======
 db(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 // mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost/crypto-mining");
 
 app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "client", "build", "index.html"))
+  res.sendFile(path.join(__dirname, "client", "build", "index.html"));
 });
->>>>>>> 8e58b83e0361f3ffca39208a94e27d4869da7607
 // Start the API server
-app.listen(PORT, function () {
+app.listen(PORT, function() {
   console.log(`🌎  ==> API Server now listening on PORT ${PORT}!`);
 });
